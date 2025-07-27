@@ -1,0 +1,11 @@
+{
+  "oa_v_rate": ".8",
+  "oa_min_flat_rate": "250",
+  "oa_min_add_rate": "0",
+  "da_v_rate": ".85",
+  "da_min_flat_rate": "175",
+  "da_min_add_rate": "0",
+  "aqis_v_rate": ".8",
+  "aqis_min_flat_rate": "100",
+  "aqis_min_add_rate": "0"
+}

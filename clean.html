@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="quote.css" />
+
+</head>
+
+<body>
+    <div class="quote">
+        <div class="quote_table">
+            <div><img src="media/orbit_logo.jpg">
+            </div>
+
+            <div>212 Dolomite Drive<br>
+                Toronto, Ontario M3J 2N2 Canada<br>
+                Tel.: <a href="tel:+14166614228">(416) 661-4228</a>, Fax: (416) 661-8228<br>
+                Email: <a hre="mailto:info@orbitmoving.com">info@orbitmoving.com</a> Web: <a
+                    href="https://www.orbitmoving.com/" target="_blank">www.orbitmoving.com</a><br>
+                Importer / Exporter # 862431434RM0001
+            </div>
+
+        </div>
+        <h2>Moving Estimate</h2>
+        <p style="text-align: center;">Quote reference: {{mfc}}<br>
+        Date: {{date_created}}</p>
+
+        <div class="quote_table">
+            <div>
+                <p><strong>Customer Information</strong></p>
+                <p>Name: {{name}}<br>
+                    Email: {{email}}<br>
+                    Phone: {{phone}}<br>
+                    Address: {{oa_street}}, {{oa_city}}, {{oa_province}}, Canada
+                </p>
+            </div>
+
+            <div>
+            <p><strong>Move Details</strong></p>
+            <p>Address: {{da_street}}, {{da_city}}, {{da_country}}<br>
+                Survey number: SRV-{{survey}}<br>
+                Volume: {{volume}} {{units}}<br>
+            </p>
+        </div>
+    </div>
+
+    <p><strong>Consolidated SEA shipment of minimum {{volume}} {{units}} (All packed and wrapped by owner)</strong></p>
+    <h3>Estimated cost: ${{grandTotal}}</h3>
+    <p>Rate per additional cuft net, when applicable: ${{additionalRate}}</p>
+
+
+</body>
+
+</html>

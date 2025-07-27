@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Dynamic JSON Form - Name Lookup</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="quote.css" />
+
+</head>
+
+<body>
+  <h1>
+    Groupage AutoCalc <em><small><img src="media/orb1_logo.svg" width="100px"> pre-<span
+          style="color:#cd0000;">alpha</span>0.25</small></em>
+  </h1>
+
+  <div class="grid">
+    <form id="dataForm">
+      <div class="grid2">
+        <h2>Customer Info</h2>
+        <button type="reset" class="btn reset hundred">Reset</button>
+
+        <div class="sap-line">Date</div>
+        <div class="input-row">
+          <input type="date" id="date_created" name="date_created" required class="txt_input mono hundred">
+        </div>
+
+
+
+        <div class="sap-line">Full Name*</div>
+        <div class="input-row">
+          <input type="text" id="name" name="name" required class="txt_input flat hundred">
+          <button type="button" onclick="loadUserByName()" class="btn load">Load</button>
+        </div>
+
+        <div class="sap-line">Email*</div>
+        <input type="email" id="email" name="email" required class="txt_input">
+        <div class="sap-line">Phone*</div>
+        <input type="tel" id="phone" name="phone" name="phone" required class="txt_input mono" inputmode="numeric">
+
+        <div class="sap-line">MASI job number*</div>
+        <div class="input-row">
+          <input type="text" id="mfc" name="mfc" required class="txt_input mono flat hundred" inputmode="numeric"
+            maxlength="8" pattern="\d{8}" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 8);">
+          <button type="button" id="masi_url" class="btn link">Open</button>
+          <button type="button" onclick="loadUserByName()" class="btn load">Load</button>
+        </div>
+
+
+
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <h2>Origin Address</h2>
+        <div>&nbsp;</div>
+
+        <div class="sap-line">Street</div>
+        <input type="street" id="oa_street" name="oa_street" class="txt_input">
+        <div class="sap-line">City*</div>
+        <input type="city" id="oa_city" name="oa_city" required class="txt_input"></label>
+        <div class="sap-line">Province*</div>
+        <select id="province" name="oa_province" required class="drop">
+          <option value="">-- Please choose --</option>
+          <option value="on">ON</option>
+          <option value="qc">QC</option>
+          <option value="ns">NS</option>
+          <option value="nb">NB</option>
+          <option value="mb">MB</option>
+          <option value="bc">BC</option>
+          <option value="pe">PE</option>
+          <option value="sk">SK</option>
+          <option value="ab">AB</option>
+          <option value="nl">NL</option>
+          <option value="nt">NT</option>
+          <option value="yt">YT</option>
+          <option value="nu">NU</option>
+        </select>
+
+        <div class="sap-line">Building Type*</div>
+
+        <select id="oa_building_type" name="oa_building_type" required class="drop">
+          <option value="house">House</option>
+          <option value="apt">Apartment</option>
+        </select>
+
+
+        <div class="sap-line">Distance*</div>
+        <div class="input-row">
+          <input type="number" id="distance" name="distance" required class="txt_input mono hundred" maxlength="4"
+            pattern="\d{4}" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 4);"> &nbsp;km
+        </div>
+
+
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+
+
+
+
+        <h2>Destination Address</h2>
+        <div>&nbsp;</div>
+
+        <div class="sap-line">Street</div>
+        <input type="street" id="da_street" name="da_street" class="txt_input">
+
+        <div class="sap-line">City*</div>
+        <input type="city" id="da_city" name="da_city" required class="txt_input">
+        <div class="sap-line">Country*</div>
+        <select id="da_country" name="da_country" required class="drop">
+          <option value="">-- Please choose --</option>
+
+          <!-- Western Europe -->
+          <option value="be">Belgium</option>
+          <option value="lu">Luxembourg</option>
+          <option value="nl">Netherlands</option>
+          <option value="fr_north">
+            France (north of Caen - Basel line)
+          </option>
+          <option value="de">Germany</option>
+
+          <!-- Central Europe -->
+          <option value="at">Austria</option>
+          <option value="cz">Czech</option>
+          <option value="dk">Denmark</option>
+          <option value="fr_south">
+            France (south of Caen - Basel line)
+          </option>
+          <option value="mc">Monaco</option>
+          <option value="ch">Switzerland</option>
+          <option value="uk_south">UK (below Manchester)</option>
+
+          <!-- Eastern/Central Europe -->
+          <option value="hr">Croatia</option>
+          <option value="ie">Ireland</option>
+          <option value="it_north">Italy (above Rome)</option>
+          <option value="pt">Portugal</option>
+          <option value="es">Spain</option>
+          <option value="uk_north">UK (above Manchester)</option>
+
+          <option value="hu">Hungary</option>
+          <option value="no">Norway (south)</option>
+          <option value="pl">Poland</option>
+          <option value="si">Slovenia</option>
+          <option value="se">Sweden (south)</option>
+          <option value="sk">Slovakia</option>
+
+
+
+          <!-- Southern & Eastern Europe -->
+          <option value="balearic">Balearic Islands</option>
+          <option value="ee">Estonia</option>
+          <option value="bg">Bulgaria</option>
+          <option value="fi">Finland south</option>
+          <option value="gr">Greece (except islands)</option>
+          <option value="lv">Latvia</option>
+          <option value="lt">Lithuania</option>
+          <option value="ro">Romania</option>
+          <option value="rs">Serbia</option>
+          <option value="it_south">Southern Italy (+ Rome & Sicily)</option>
+
+
+          <option value="mt">Malta</option>
+          <option value="cy">Cyprus</option>
+
+          <!-- Not Europe -->
+          <option value="dub">Dubai, UAE</option>
+          <option value="abu">Abu Dhabi, UAE</option>
+
+          <!-- <option value="au">Australia</option>
+          <option value="nz">New Zealand</option>
+          <option value="ind">India</option> -->
+
+
+        </select>
+
+        <div class="sap-line">Building type*</div>
+        <select id="da_building_type" name="da_building_type" required class="drop">
+          <option value="house">House</option>
+          <option value="apt">Apartment</option>
+        </select>
+
+
+        <div class="sap-line">Survey</div>
+        <div class="input-row">
+          SRV- <input type="number" id="survey" name="survey" class="txt_input mono hundred" maxlength="4"
+            pattern="\d{4}" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 4);">
+        </div>
+
+
+        <div class="sap-line">Volume*</div>
+        <div class="input-row">
+          <input type="number" step="0.1" id="volume" name="volume" required class="txt_input mono flat hundred">
+          <select id="units" name="units" required class="drop">
+            <option value="cuft">cuft</option>
+            <option value="cbm">cbm</option>
+          </select>
+        </div>
+
+        <div class="sap-line">Packing type*</div>
+        <select id="pack" name="pack" required class="drop">
+          <option value="full">Full Service</option>
+          <option value="pbo">PBO</option>
+          <option value="wrap">Wrap no Pack</option>
+          <option value="dropoff">Drop off at Warehouse</option>
+        </select>
+
+        <button type="submit" class="btn save hundred">Save User & Calculate</button>
+        <div>&nbsp;</div>
+
+    </form>
+
+
+  </div>
+
+
+
+  <div id="right">
+    <div id="result">RESULT</div>
+
+
+    <div id="quote">
+      <div id="quotePreview">QUOTE</div>
+      <div id="quoteButtons"></div>
+    </div>
+
+
+
+
+
+
+
+  </div>
+
+
+  <script src="form-handler.js"></script>
+  <script src="calculator.js"></script>
+  <script src="quote.js"></script>
+
+
+</body>
+
+</html>

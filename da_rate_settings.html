@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination Rate Settings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Destination Rate Settings</h1>
+
+    <div>
+        <form id="da_rates">
+
+            <label>Company: <select id="da_company" name="da_company">
+                    <option value="">-- Please choose --</option>
+                </select></label>
+            <button type="button" onclick="loadDACompanyByName()">Load DA Company</button>
+
+            <label>Company name: <input type="text" id="da_company_name" name="da_company_name"></label>
+
+            <button type="submit">Save DA Company Rates</button>
+            <button type="reset">Reset</button>
+
+            <button type="button" id="addDARow">Add New Line</button>
+
+
+
+            <div class="da_grid">
+                <div>Country/DA
+                    <div>
+                        <label>Currency: <select id="da_currency" name="da_currency">
+                                <option value="usd">USD</option>
+                                <option value="eur">EUR</option>
+                                <option value="gbp">GBP</option>
+                                <option value="aud">AUD</option>
+                                <option value="cad">CAD</option>
+                            </select></label>
+                    </div>
+                </div>
+                <div>Minimum $</div>
+                <div>Min (cuft)</div>
+                <div>Max (cuft)</div>
+
+                <div>DA Rate</div>
+                <div>DA Rate Type</div>
+
+                <div>Additional $ / Markup multiplier</div>
+                <div>Markup Type</div>
+
+                <!-- range 1 -->
+                <input type="text" id="da_country1" name="da_countr1y">
+                <input type="number" step="0.01" id="da_minimum1" name="da_minimum1">
+                <input type="number" step="0.01" id="da_min1" name="da_min1">
+                <input type="number" step="0.01" id="da_max1" name="da_max1">
+
+                <input type="number" step="0.01" id="da_rate1" name="da_rate1">
+                <div>
+                    <input type="radio" id="da_rate_type_1" name="da_rate_type_1" value="variable">
+                    <label for="da_rate_type_v_1">Variable</label><br>
+                    <input type="radio" id="da_rate_type_f_1" name="da_rate_type_1" value="flat">
+                    <label for="da_rate_type_f_1">Flat</label>
+                </div>
+
+                <input type="number" step="0.01" id="da_markup_rate1" name="da_markup_rate1">
+                <div>
+                    <input type="radio" id="da_markup_rate_type_v_1" name="da_markup_rate_type_1" value="variable">
+                    <label for="da_markup_rate_type_v_1">Multip.</label><br>
+                    <input type="radio" id="da_markup_rate_type_f_1" name="da_markup_rate_type_1" value="flat">
+                    <label for="da_markup_rate_type_f_1">Flat</label>
+                </div>
+
+
+                <!-- range 2 -->
+                <input type="text" id="da_country2" name="da_country2">
+                <input type="number" step="0.01" id="da_minimum2" name="da_minimum2">
+                <input type="number" step="0.01" id="da_min2" name="da_min2">
+                <input type="number" step="0.01" id="da_max2" name="da_max2">
+
+                <input type="number" step="0.01" id="da_rate2" name="da_rate2">
+                <div>
+                    <input type="radio" id="da_rate_type_2" name="da_rate_type_2" value="variable">
+                    <label for="da_rate_type_v_2">Variable</label><br>
+                    <input type="radio" id="da_rate_type_f_2" name="da_rate_type_2" value="flat">
+                    <label for="da_rate_type_f_2">Flat</label>
+                </div>
+
+                <input type="number" step="0.01" id="da_markup_rate2" name="da_markup_rate2">
+                <div>
+                    <input type="radio" id="da_markup_rate_type_v_2" name="da_markup_rate_type_2" value="variable">
+                    <label for="da_markup_rate_type_v_2">Multip.</label><br>
+                    <input type="radio" id="da_markup_rate_type_f_2" name="da_markup_rate_type_2" value="flat">
+                    <label for="da_markup_rate_type_f_2">Flat</label>
+                </div>
+
+
+                <!-- range 3 -->
+                <input type="text" id="da_country3" name="da_country3">
+                <input type="number" step="0.01" id="da_minimum3" name="da_minimum3">
+                <input type="number" step="0.01" id="da_min3" name="da_min3">
+                <input type="number" step="0.01" id="da_max3" name="da_max3">
+
+                <input type="number" step="0.01" id="da_rate3" name="da_rate3">
+                <div>
+                    <input type="radio" id="da_rate_type_3" name="da_rate_type_3" value="variable">
+                    <label for="da_rate_type_v_3">Variable</label><br>
+                    <input type="radio" id="da_rate_type_f_3" name="da_rate_type_3" value="flat">
+                    <label for="da_rate_type_f_3">Flat</label>
+                </div>
+
+                <input type="number" step="0.01" id="da_markup_rate3" name="da_markup_rate3">
+                <div>
+                    <input type="radio" id="da_markup_rate_type_v_3" name="da_markup_rate_type_3" value="variable">
+                    <label for="da_markup_rate_type_v_3">Multip.</label><br>
+                    <input type="radio" id="da_markup_rate_type_f_3" name="da_markup_rate_type_3" value="flat">
+                    <label for="da_markup_rate_type_f_3">Flat</label>
+                </div>
+
+
+                <!-- range 4 -->
+                <input type="text" id="da_country4" name="da_country4">
+                <input type="number" step="0.01" id="da_minimum4" name="da_minimum4">
+                <input type="number" step="0.01" id="da_min4" name="da_min4">
+                <input type="number" step="0.01" id="da_max4" name="da_max4">
+
+                <input type="number" step="0.01" id="da_rate4" name="da_rate4">
+                <div>
+                    <input type="radio" id="da_rate_type_4" name="da_rate_type_4" value="variable">
+                    <label for="da_rate_type_v_4">Variable</label><br>
+                    <input type="radio" id="da_rate_type_f_4" name="da_rate_type_4" value="flat">
+                    <label for="da_rate_type_f_4">Flat</label>
+                </div>
+
+                <input type="number" step="0.01" id="da_markup_rate4" name="da_markup_rate4">
+                <div>
+                    <input type="radio" id="da_markup_rate_type_v_4" name="da_markup_rate_type_4" value="variable">
+                    <label for="da_markup_rate_type_v_4">Multip.</label><br>
+                    <input type="radio" id="da_markup_rate_type_f_4" name="da_markup_rate_type_4" value="flat">
+                    <label for="da_markup_rate_type_f_4">Flat</label>
+                </div>
+
+
+                <!-- range 5 -->
+                <input type="text" id="da_country5" name="da_country5">
+                <input type="number" step="0.01" id="da_minimum5" name="da_minimum5">
+                <input type="number" step="0.01" id="da_min5" name="da_min5">
+                <input type="number" step="0.01" id="da_max5" name="da_max5">
+
+                <input type="number" step="0.01" id="da_rate5" name="da_rate5">
+                <div>
+                    <input type="radio" id="da_rate_type_5" name="da_rate_type_5" value="variable">
+                    <label for="da_rate_type_v_5">Variable</label><br>
+                    <input type="radio" id="da_rate_type_f_5" name="da_rate_type_5" value="flat">
+                    <label for="da_rate_type_f_5">Flat</label>
+                </div>
+
+                <input type="number" step="0.01" id="da_markup_rate5" name="da_markup_rate5">
+                <div>
+                    <input type="radio" id="da_markup_rate_type_v_5" name="da_markup_rate_type_5" value="variable">
+                    <label for="da_markup_rate_type_v_5">Multip.</label><br>
+                    <input type="radio" id="da_markup_rate_type_f_5" name="da_markup_rate_type_5" value="flat">
+                    <label for="da_markup_rate_type_f_5">Flat</label>
+                </div>
+
+
+                <!-- range 6 -->
+                <input type="text" id="da_country6" name="da_country6">
+                <input type="number" step="0.01" id="da_minimum6" name="da_minimum6">
+                <input type="number" step="0.01" id="da_min6" name="da_min6">
+                <input type="number" step="0.01" id="da_max6" name="da_max6">
+
+                <input type="number" step="0.01" id="da_rate6" name="da_rate6">
+                <div>
+                    <input type="radio" id="da_rate_type_6" name="da_rate_type_6" value="variable">
+                    <label for="da_rate_type_v_6">Variable</label><br>
+                    <input type="radio" id="da_rate_type_f_6" name="da_rate_type_6" value="flat">
+                    <label for="da_rate_type_f_6">Flat</label>
+                </div>
+
+                <input type="number" step="0.01" id="da_markup_rate6" name="da_markup_rate6">
+                <div>
+                    <input type="radio" id="da_markup_rate_type_v_6" name="da_markup_rate_type_6" value="variable">
+                    <label for="da_markup_rate_type_v_6">Multip.</label><br>
+                    <input type="radio" id="da_markup_rate_type_f_6" name="da_markup_rate_type_6" value="flat">
+                    <label for="da_markup_rate_type_f_6">Flat</label>
+                </div>
+
+
+                <!-- range 7 -->
+                <input type="text" id="da_country7" name="da_country7">
+                <input type="number" step="0.01" id="da_minimum7" name="da_minimum7">
+                <input type="number" step="0.01" id="da_min7" name="da_min7">
+                <input type="number" step="0.01" id="da_max7" name="da_max7">
+
+                <input type="number" step="0.01" id="da_rate7" name="da_rate7">
+                <div>
+                    <input type="radio" id="da_rate_type_7" name="da_rate_type_7" value="variable">
+                    <label for="da_rate_type_v_7">Variable</label><br>
+                    <input type="radio" id="da_rate_type_f_7" name="da_rate_type_7" value="flat">
+                    <label for="da_rate_type_f_7">Flat</label>
+                </div>
+
+                <input type="number" step="0.01" id="da_markup_rate7" name="da_markup_rate7">
+                <div>
+                    <input type="radio" id="da_markup_rate_type_v_7" name="da_markup_rate_type_7" value="variable">
+                    <label for="da_markup_rate_type_v_7">Multip.</label><br>
+                    <input type="radio" id="da_markup_rate_type_f_7" name="da_markup_rate_type_7" value="flat">
+                    <label for="da_markup_rate_type_f_7">Flat</label>
+                </div>
+
+
+                <!-- range 8 -->
+                <input type="text" id="da_country8" name="da_country8">
+                <input type="number" step="0.01" id="da_minimum8" name="da_minimum8">
+                <input type="number" step="0.01" id="da_min8" name="da_min8">
+                <input type="number" step="0.01" id="da_max8" name="da_max8">
+
+                <input type="number" step="0.01" id="da_rate8" name="da_rate8">
+                <div>
+                    <input type="radio" id="da_rate_type_8" name="da_rate_type_8" value="variable">
+                    <label for="da_rate_type_v_8">Variable</label><br>
+                    <input type="radio" id="da_rate_type_f_8" name="da_rate_type_8" value="flat">
+                    <label for="da_rate_type_f_8">Flat</label>
+                </div>
+
+                <input type="number" step="0.01" id="da_markup_rate8" name="da_markup_rate8">
+                <div>
+                    <input type="radio" id="da_markup_rate_type_v_8" name="da_markup_rate_type_8" value="variable">
+                    <label for="da_markup_rate_type_v_8">Multip.</label><br>
+                    <input type="radio" id="da_markup_rate_type_f_8" name="da_markup_rate_type_8" value="flat">
+                    <label for="da_markup_rate_type_f_8">Flat</label>
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+
+            <!-- Travel and Surcharges -->
+            <h2>Travel and Surcharges</h2>
+
+            <div class="rate_grid">
+                <div>Travel Min (km)</div>
+                <div>Travel Max (km)</div>
+                <div>Travel rate $</div>
+                <div>Rate Type</div>
+
+                <div>Elevator Min (cuft)</div>
+                <div>Elevator Max (cuft)</div>
+                <div>Elevator rate $</div>
+                <div>Rate Type</div>
+
+                <div>Long Carry Min (cuft)</div>
+                <div>Long Carry Max (cuft)</div>
+                <div>Long Carry rate $</div>
+                <div>Rate Type</div>
+
+                <!-- range 1 -->
+                <input type="number" step="0.01" id="da_travel_min1" name="da_travel_min1">
+                <input type="number" step="0.01" id="da_travel_max1" name="da_travel_max1">
+                <input type="number" step="0.01" id="da_travel_rate1" name="da_travel_rate1">
+                <div>
+                    <input type="radio" id="da_travel_type_v_1" name="da_travel_type_1" value="variable">
+                    <label for="da_travel_type_v_1">Variable</label><br>
+                    <input type="radio" id="da_travel_type_f_1" name="da_travel_type_1" value="flat">
+                    <label for="da_travel_type_f_1">Flat</label>
+                </div>
+
+                <input type="number" step="0.01" id="da_elevator_min1" name="da_elevator_min1">
+                <input type="number" step="0.01" id="da_elevator_max1" name="da_elevator_max1">
+                <input type="number" step="0.01" id="da_elevator_rate1" name="da_elevator_rate1">
+                <div>
+                    <input type="radio" id="da_elevator_type_v_1" name="da_elevator_type_1" value="variable">
+                    <label for="da_elevator_type_v_1">Variable</label><br>
+                    <input type="radio" id="da_elevator_type_f_1" name="da_elevator_type_1" value="flat">
+                    <label for="da_elevator_type_f_1">Flat</label>
+                </div>
+
+                <input type="number" step="0.01" id="da_longcarry_min1" name="da_longcarry_min1">
+                <input type="number" step="0.01" id="da_longcarry_max1" name="da_longcarry_max1">
+                <input type="number" step="0.01" id="da_longcarry_rate1" name="da_longcarry_rate1">
+                <div>
+                    <input type="radio" id="da_longcarry_type_v_1" name="da_longcarry_type_1" value="variable">
+                    <label for="da_longcarry_type_v_1">Variable</label><br>
+                    <input type="radio" id="da_longcarry_type_f_1" name="da_longcarry_type_1" value="flat">
+                    <label for="da_longcarry_type_f_1">Flat</label>
+                </div>
+
+
+                <!-- range 2 -->
+                <input type="number" step="0.01" id="da_travel_min2" name="da_travel_min2">
+                <input type="number" step="0.01" id="da_travel_max2" name="da_travel_max2">
+                <input type="number" step="0.01" id="da_travel_rate2" name="da_travel_rate2">
+                <div>
+                    <input type="radio" id="da_travel_type_v_2" name="da_travel_type_2" value="variable">
+                    <label for="da_travel_type_v_2">Variable</label><br>
+                    <input type="radio" id="da_travel_type_f_2" name="da_travel_type_2" value="flat">
+                    <label for="da_travel_type_f_2">Flat</label>
+                </div>
+
+                <input type="number" step="0.01" id="da_elevator_min2" name="da_elevator_min2">
+                <input type="number" step="0.01" id="da_elevator_max2" name="da_elevator_max2">
+                <input type="number" step="0.01" id="da_elevator_rate2" name="da_elevator_rate2">
+                <div>
+                    <input type="radio" id="da_elevator_type_v_2" name="da_elevator_type_2" value="variable">
+                    <label for="da_elevator_type_v_2">Variable</label><br>
+                    <input type="radio" id="da_elevator_type_f_2" name="da_elevator_type_2" value="flat">
+                    <label for="da_elevator_type_f_2">Flat</label>
+                </div>
+
+                <input type="number" step="0.01" id="da_longcarry_min2" name="da_longcarry_min2">
+                <input type="number" step="0.01" id="da_longcarry_max2" name="da_longcarry_max2">
+                <input type="number" step="0.01" id="da_longcarry_rate2" name="da_longcarry_rate2">
+                <div>
+                    <input type="radio" id="da_longcarry_type_v_2" name="da_longcarry_type_2" value="variable">
+                    <label for="da_longcarry_type_v_2">Variable</label><br>
+                    <input type="radio" id="da_longcarry_type_f_2" name="da_longcarry_type_2" value="flat">
+                    <label for="da_longcarry_type_f_2">Flat</label>
+                </div>
+
+
+
+
+
+            </div>
+        </form>
+
+    </div>
+
+
+    <script src="da-handler.js"></script>
+
+</body>
+
+</html>

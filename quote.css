@@ -1,0 +1,77 @@
+@font-face {
+    font-family: "Nimbus";
+    src: url("media/nimr.otf");
+}
+
+@font-face {
+    font-family: "Nimbus";
+    font-weight: bold;
+    src: url("media/nimb.otf");
+}
+
+@font-face {
+    font-family: "Nimbus";
+    font-style: italic;
+    src: url("media/nimi.otf");
+}
+
+@font-face {
+    font-family: "Nimbus";
+    font-weight: bold;
+    font-style: italic;
+    src: url("media/nimz.otf");
+}
+
+/* @font-face {
+  font-family: "Nimbus";
+  font-weight: lighter;
+  src: url("media/nimnar.otf");
+} */
+
+.quote {
+    padding: 1rem;
+    font-family: Nimbus, sans-serif !important;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+
+.quote_table {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: Nimbus, sans-serif !important;
+}
+
+.quote h2 {
+    text-align: center !important;
+    font-size: 2.5rem;
+    font-family: Nimbus, sans-serif !important;
+}
+
+.quote h3 {
+    font-size: 1.5rem;
+    font-family: Nimbus, sans-serif !important;
+}
+
+.quote p {
+    font-family: Nimbus, sans-serif !important;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #quote,
+    #quote * {
+        visibility: visible;
+    }
+
+    #quote {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+}

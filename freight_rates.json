@@ -1,0 +1,114 @@
+[
+  {
+    "country_name": "Nl",
+    "rates": [
+      {
+        "min": "0",
+        "max": "200",
+        "freight_rate": "3.74",
+        "freight_rate_type": "variable",
+        "markup": "",
+        "markup_type": ""
+      },
+      {
+        "min": "201",
+        "max": "300",
+        "freight_rate": "3.12",
+        "freight_rate_type": "variable",
+        "markup": "",
+        "markup_type": ""
+      },
+      {
+        "min": "301",
+        "max": "400",
+        "freight_rate": "2.88",
+        "freight_rate_type": "variable",
+        "markup": "",
+        "markup_type": ""
+      },
+      {
+        "min": "401",
+        "max": "600",
+        "freight_rate": "2.67",
+        "freight_rate_type": "variable",
+        "markup": "",
+        "markup_type": ""
+      },
+      {
+        "min": "601",
+        "max": "900",
+        "freight_rate": "2.34",
+        "freight_rate_type": "variable",
+        "markup": "",
+        "markup_type": ""
+      },
+      {
+        "min": "901",
+        "max": "9999",
+        "freight_rate": "2.2",
+        "freight_rate_type": "variable",
+        "markup": "",
+        "markup_type": ""
+      }
+    ],
+    "minimums": {
+      "freight": "300"
+    }
+  },
+  {
+    "country_name": "Uae",
+    "rates": [
+      {
+        "min": "0",
+        "max": "200",
+        "freight_rate": "5.25",
+        "freight_rate_type": "variable",
+        "markup": "",
+        "markup_type": ""
+      },
+      {
+        "min": "201",
+        "max": "300",
+        "freight_rate": "4.87",
+        "freight_rate_type": "variable",
+        "markup": "",
+        "markup_type": ""
+      },
+      {
+        "min": "301",
+        "max": "400",
+        "freight_rate": "4.69",
+        "freight_rate_type": "variable",
+        "markup": "",
+        "markup_type": ""
+      },
+      {
+        "min": "401",
+        "max": "600",
+        "freight_rate": "4.38",
+        "freight_rate_type": "variable",
+        "markup": "",
+        "markup_type": ""
+      },
+      {
+        "min": "601",
+        "max": "900",
+        "freight_rate": "4.11",
+        "freight_rate_type": "variable",
+        "markup": "",
+        "markup_type": ""
+      },
+      {
+        "min": "901",
+        "max": "9999",
+        "freight_rate": "3.65",
+        "freight_rate_type": "variable",
+        "markup": "",
+        "markup_type": ""
+      }
+    ],
+    "minimums": {
+      "freight": "300"
+    }
+  }
+]

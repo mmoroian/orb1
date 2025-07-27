@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbit Margin Rate Settings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Orbit Margin Rate Settings</h1>
+
+    <div>
+        <form id="freight_rates">
+
+
+            <button type="button" onclick="loadOrbit()">Load Orbit Margins</button>
+
+            <button type="submit">Save Orbit Margins</button>
+            <button type="reset">Reset</button>
+
+
+
+            <div class="margin_grid">
+                <div class="margin-row">
+                    <div>OA Variable Rate</div>
+                    <div>OA Minimum Flat $</div>
+                    <div>OA Additional Flat $</div>
+
+                    <div>DA Variable Rate</div>
+                    <div>DA Minimum Flat $</div>
+                    <div>DA Additional Flat $</div>
+
+                    <div>AQIS Variable Rate</div>
+                    <div>AQIS Minimum Flat $</div>
+                    <div>AQIS Additional Flat $</div>
+                </div>
+
+                <div class="margin-row" data-index="1">
+                    <!-- range 1 -->
+                    <input type="number" step="0.01" id="oa_v_rate" name="oa_v_rate">
+                    <input type="number" step="0.01" id="oa_min_flat_rate" name="oa_min_flat_rate">
+                    <input type="number" step="0.01" id="oa_min_add_rate" name="oa_min_add_rate">
+                    <input type="number" step="0.01" id="da_v_rate" name="da_v_rate">
+                    <input type="number" step="0.01" id="da_min_flat_rate" name="da_min_flat_rate">
+                    <input type="number" step="0.01" id="da_min_add_rate" name="da_min_add_rate">
+                    <input type="number" step="0.01" id="aqis_v_rate" name="aqis_v_rate">
+                    <input type="number" step="0.01" id="aqis_min_flat_rate" name="aqis_min_flat_rate">
+                    <input type="number" step="0.01" id="aqis_min_add_rate" name="aqis_min_add_rate">
+                </div>
+            </div>
+    </div>
+
+
+    </form>
+
+    <script src="margin-handler.js"></script>
+
+</body>
+
+</html>

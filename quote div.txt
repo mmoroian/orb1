@@ -1,0 +1,177 @@
+<div id="quote">
+
+      <table>
+        <tr>
+          <td><img src="media/orbit_logo.jpg"></td>
+          <td style="font-size: 0.75rem;">212 Dolomite Drive<br>
+            Toronto, Ontario M3J 2N2 Canada<br>
+            Tel.: (416) 661-4228, Fax: (416) 661-8228<br>
+            Email: info@orbitmoving.com Web: www.orbitmoving.com<br>
+            Importer / Exporter # 862431434RM0001
+          </td>
+        </tr>
+
+      </table>
+
+      <p style="text-align: center;"><strong>Quotation / Agreement REF# ${mfc}<br>
+          Between Orbit International Moving Logistics Ltd. and ${name}</strong><br>
+        <span style="color: #cd0000;">Please read and sign each of the following pages.</span><br><br>
+      </p>
+
+
+
+
+
+
+
+
+
+      <table>
+        <tr>
+          <td>Dear ${NAME},</td>
+          <td>${date_created}</td>
+        </tr>
+      </table>
+
+
+      <p>Thank you for giving Orbit the opportunity to present our estimate for your move from ${oa_city},
+        ${oa_province}, Canada to ${da_city}, ${da_country}. We want to assure you that if you entrust us with your
+        move,
+        we will fully commit our attention and expertise to your moving needs.</p>
+
+      <table class="lined">
+        <tr>
+          <td><strong>Origin Address:</strong></td>
+          <td>${oa_street}, ${oa_city}, ${oa_province}, Canada</td>
+          <td><strong>Destination Address:</strong></td>
+          <td>${da_street}, ${da_city}, ${da_country}</td>
+        </tr>
+
+        <tr>
+          <td>Tel:</td>
+          <td>${phone}</td>
+          <td>Email:</td>
+          <td>${email}</td>
+        </tr>
+      </table>
+
+      <table class="lined">
+        <tr>
+          <td><strong>Service:</strong></td>
+          <td><strong>Description</strong></td>
+          <td><strong>Rate</strong></td>
+          <td><strong>Currency</strong></td>
+        </tr>
+
+        <tr>
+          <td>${oa_building_type} to ${da_building_type}</td>
+          <td>
+            <strong>Consolidated SEA shipment of minimum ${volume} Net CUFT - pending survey ${survey}</strong>
+            <ul>
+              <li>Rate per additional Net CUFT, when applicable: $${additionalRate}</li>
+              <li>Read Inclusions / Exclusions below and on page 2 for possible additional fees.</li>
+              <li>Maximum weight density: 3.18 kg / 7 lbs. per CUFT</li>
+              <li>Normal transit time: approximately 6–16 weeks. - See transit Time notes on page 2</li>
+            </ul>
+          </td>
+          <td><strong>${grandTotal}</strong></td>
+          <td><strong>CAD</strong></td>
+        </tr>
+        <tr>
+          <td>Replacement Protection <em>(Insurance)</em><br><br>
+            <span style="font-size: 0.75rem; color: #cd0000;">One option to be chosen on separate insurance valuation
+              form.</span>
+          </td>
+          <td colspan="3">
+            <table style="font-size: 0.75rem;">
+              <tr>
+                <td>#</td>
+                <td>⇩</td>
+                <td>Amount <span style="background-color: #FFFF55;">$________________</span></td>
+                <td><strong><em>Select 1 option from below</em></strong></td>
+                <td>Premium <span style="background-color: #FFFF55;">$________________</span></td>
+              </tr>
+              <tr>
+                <td><strong><em>1</em></strong></td>
+                <td>□</td>
+                <td colspan="3"><strong>"All Risk"</strong> <em>(Only available when this is a full Door to Door service
+                    with packing)</em></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td><strong><em>Deductible (you choose):</em></strong></td>
+                <td colspan="2"><strong><em>Cost:</em></strong></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>□ $250</td>
+                <td colspan="2">3.00% of the insured value</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>□ $500</td>
+                <td colspan="2">2.75% of the insured value</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>□ $1000</td>
+                <td colspan="2">2.25% of the insured value</td>
+              </tr>
+              <tr>
+                <td><strong><em>2</em></strong></td>
+                <td>□</td>
+                <td colspan="3"><strong>"Total Loss"</strong> <em>(Basic coverage against complete loss of the entire
+                    shipment <strong>ONLY</strong>)</em></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>$0 deductible</td>
+                <td colspan="2">1.5% of the insured value</td>
+              </tr>
+              <tr>
+                <td><strong><em>3</em></strong></td>
+                <td>□</td>
+                <td colspan="3"><strong>No Coverage</strong> <em>(waiver required) – see notes on page 3.</em></td>
+              </tr>
+        </tr>
+      </table>
+      <span style="font-size: 0.75rem;">*Any single artwork insured <strong>over $5,000</strong> must have a proof of
+        value (either an invoice or an appraisal).</span>
+      </td>
+      </tr>
+      </table>
+
+      <p><strong>Our Price Includes:</strong></p>
+      <ol>
+        <li>Apartment: Pickup from an apartment with 1 service elevator, where the total distance from the truck or
+          container to the entry of the apartment is no more than 75 feet.</li>
+        <li>Dismantling USED beds, kitchen and dining room tables with 8 screws or less.</li>
+        <li>All packing and wrapping materials. Packing, wrapping, preparation of inventory list, loading and/or bracing and preparation of all
+          shipping documents.</li>
+        <li>Transporting your shipment to the destination country and normal customs clearance. </li>
+        <li>Delivery into residence on ground or the level above (not large, heavy items like a piano or safe), where
+          the total distance from the truck or container to the entry of the residence is no more than 50 feet.</li>
+          <li>Delivery includes verification of packing inventory, unwrapping and basic set-up of furniture. Basic set-up is limited
+          to the reassembly of USED beds, kitchen and dining room tables with 8 screws or less. Extensive assembly of
+          bookcases, exercise equipment, wall units, armoires, IKEA or Shrank type furniture, bunk beds, beds with many
+          parts, cribs and new items is not included in this service. Removal of used packing material on the day of the
+          delivery.</li>
+      </ol>
+   
+
+      TBC.... TBC.... TBC.... TBC.... TBC.... TBC.... TBC.... TBC.... 
+
+
+
+
+
+
+
+
+
+    </div>
