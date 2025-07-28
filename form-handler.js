@@ -1,32 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const dateInput = document.getElementById("date_created");
-  if (dateInput && !dateInput.value) {
-    const today = new Date().toISOString().split("T")[0];
-    dateInput.value = today;
-  }
-
+  // Get form elements
   const form = document.getElementById("dataForm");
+  const dateInput = document.getElementById("date_created");
   const nameInput = document.getElementById("name");
   const mfcInput = document.getElementById("mfc");
   const masiBtn = document.getElementById("masi_url");
 
-  // Auto-capitalize name on blur
-  nameInput.addEventListener("blur", () => {
-    if (!nameInput.value.trim()) return;
+  // Set initial date if empty
+  function setTodayDate() {
+    if (dateInput && !dateInput.value) {
+      const today = new Date().toISOString().split("T")[0];
+      dateInput.value = today;
+    }
+  }
+  setTodayDate();
 
-    const corrected = nameInput.value
-      .toLowerCase()
-      .trim()
-      .split(/\s+/)
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-
-    nameInput.value = corrected;
-  });
+  // Auto-capitalize name - simplified to avoid blocking
+  if (nameInput) {
+    nameInput.addEventListener("blur", (e) => {
+      const value = e.target.value.trim();
+      if (value) {
+        e.target.value = value
+          .toLowerCase()
+          .split(/\s+/)
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ");
+      }
+    });
+  }
 
   // Handle MASI URL button functionality
   function updateMasiButton() {
-    const mfc = mfcInput?.value?.trim();
+    if (!masiBtn || !mfcInput) return;
+    
+    const mfc = mfcInput.value.trim();
     if (mfc) {
       masiBtn.disabled = false;
       masiBtn.style.display = "inline-block";
@@ -38,115 +45,180 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Add MFC input listener once
-  mfcInput.addEventListener("input", updateMasiButton);
+  // Add MFC input listener
+  if (mfcInput) {
+    mfcInput.addEventListener("input", updateMasiButton);
+  }
 
-  // Handle form reset
-  form.addEventListener("reset", () => {
-    // Reset MASI button
-    masiBtn.disabled = true;
-    masiBtn.style.display = "none";
-    masiBtn.onclick = null;
-    
-    // Reset result display
-    document.getElementById("result").innerHTML = "RESET";
-    
-    // Reset date to today
-    if (dateInput) {
-      const today = new Date().toISOString().split("T")[0];
-      dateInput.value = today;
-    }
-  });
-
-  // Handle form submission - let calculator run first, then save
-  form.addEventListener("submit", async (e) => {
-    // Don't prevent default - let calculator handle it
-  });
+  // Handle form reset - ensure inputs remain functional
+  if (form) {
+    form.addEventListener("reset", (e) => {
+      // Use setTimeout to ensure reset completes first
+      setTimeout(() => {
+        // Reset MASI button
+        if (masiBtn) {
+          masiBtn.disabled = true;
+          masiBtn.style.display = "none";
+          masiBtn.onclick = null;
+        }
+        
+        // Reset result display
+        const resultEl = document.getElementById("result");
+        if (resultEl) {
+          resultEl.innerHTML = "RESET";
+        }
+        
+        // Set date to today after reset
+        setTodayDate();
+        
+        // Ensure all inputs are enabled and functional
+        const allInputs = form.querySelectorAll('input, select, textarea');
+        allInputs.forEach(input => {
+          input.disabled = false;
+          input.readOnly = false;
+        });
+      }, 10);
+    });
+  }
 
   // Listen for calculation completion to save user data
   document.addEventListener("quote:calculated", async () => {
-    const data = {
-      date_created: document.getElementById("date_created").value.trim(),
-      name: document.getElementById("name").value.trim(),
-      email: document.getElementById("email").value.trim(),
-      phone: document.getElementById("phone").value.trim(),
-      mfc: document.getElementById("mfc").value.trim(),
-      oa_street: document.getElementById("oa_street").value.trim(),
-      oa_city: document.getElementById("oa_city").value.trim(),
-      oa_province: document.getElementById("province").value,
-      oa_building_type: document.getElementById("oa_building_type").value,
-      distance: document.getElementById("distance").value.trim(),
-      da_street: document.getElementById("da_street").value.trim(),
-      da_city: document.getElementById("da_city").value.trim(),
-      da_country: document.getElementById("da_country").value,
-      da_building_type: document.getElementById("da_building_type").value,
-      survey: document.getElementById("survey").value.trim(),
-      volume: document.getElementById("volume").value.trim(),
-      units: document.getElementById("units").value,
-      pack: document.getElementById("pack").value
-    };
+    // Don't block UI during save operation
+    setTimeout(async () => {
+      try {
+        const data = {
+          date_created: document.getElementById("date_created")?.value?.trim() || "",
+          name: document.getElementById("name")?.value?.trim() || "",
+          email: document.getElementById("email")?.value?.trim() || "",
+          phone: document.getElementById("phone")?.value?.trim() || "",
+          mfc: document.getElementById("mfc")?.value?.trim() || "",
+          oa_street: document.getElementById("oa_street")?.value?.trim() || "",
+          oa_city: document.getElementById("oa_city")?.value?.trim() || "",
+          oa_province: document.getElementById("province")?.value || "",
+          oa_building_type: document.getElementById("oa_building_type")?.value || "",
+          distance: document.getElementById("distance")?.value?.trim() || "",
+          da_street: document.getElementById("da_street")?.value?.trim() || "",
+          da_city: document.getElementById("da_city")?.value?.trim() || "",
+          da_country: document.getElementById("da_country")?.value || "",
+          da_building_type: document.getElementById("da_building_type")?.value || "",
+          survey: document.getElementById("survey")?.value?.trim() || "",
+          volume: document.getElementById("volume")?.value?.trim() || "",
+          units: document.getElementById("units")?.value || "",
+          pack: document.getElementById("pack")?.value || ""
+        };
 
-    try {
-      const res = await fetch("http://localhost:3000/data", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      });
+        const res = await fetch("http://localhost:3000/data", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
 
-      if (!res.ok) throw new Error("Server error");
-      console.log("User data saved successfully");
-    } catch (err) {
-      console.error("Save failed:", err);
-      // Only show error if save fails
-      alert("Failed to save user data.");
-    }
+        if (res.ok) {
+          console.log("User data saved successfully");
+        } else {
+          console.warn("Failed to save user data:", res.status);
+        }
+      } catch (err) {
+        console.error("Save failed:", err);
+      }
+    }, 50);
   });
 
-  // Load user by name or MFC
+  // Load user by name or MFC - improved to prevent blocking
   window.loadUserByName = async () => {
-    const inputName = document.getElementById("name").value.trim().toLowerCase();
-    const inputMfc = document.getElementById("mfc").value.trim();
+    const nameEl = document.getElementById("name");
+    const mfcEl = document.getElementById("mfc");
+    
+    if (!nameEl || !mfcEl) return;
+    
+    const inputName = nameEl.value.trim().toLowerCase();
+    const inputMfc = mfcEl.value.trim();
+
+    if (!inputName && !inputMfc) {
+      alert("Please enter a name or MFC number to load.");
+      return;
+    }
 
     try {
-      const res = await fetch(`http://localhost:3000/data`);
-      const users = await res.json();
+      // Show loading state but don't disable inputs
+      const resultEl = document.getElementById("result");
+      if (resultEl) {
+        resultEl.innerHTML = "Loading user...";
+      }
 
-      const found = Object.values(users).find(u =>
-        (u.name && u.name.toLowerCase() === inputName) ||
-        (u.mfc && u.mfc === inputMfc)
-      );
+      const res = await fetch("http://localhost:3000/data");
+      if (!res.ok) throw new Error("Failed to fetch user data");
+      
+      const users = await res.json();
+      
+      const found = Array.isArray(users) 
+        ? users.find(u =>
+            (u.name && u.name.toLowerCase() === inputName) ||
+            (u.mfc && u.mfc === inputMfc)
+          )
+        : Object.values(users).find(u =>
+            (u.name && u.name.toLowerCase() === inputName) ||
+            (u.mfc && u.mfc === inputMfc)
+          );
 
       if (found) {
+        // Load user data into form
         for (const [key, value] of Object.entries(found)) {
+          if (value === null || value === undefined) continue;
+          
           let el = document.getElementById(key);
-
+          
           // Handle special cases for element IDs
           if (!el && key === 'oa_province') el = document.getElementById('province');
           if (!el && key === 'da_country') el = document.getElementById('da_country');
 
-          if (el) {
+          if (el && el.tagName) {
             el.value = value;
-          } else if (key === "date_created") {
-            const dateEl = document.getElementById("date_created");
-            if (dateEl) dateEl.value = value;
           }
         }
 
         // Update MASI button after loading user data
         updateMasiButton();
 
-        alert("User loaded!");
+        if (resultEl) {
+          resultEl.innerHTML = "User loaded successfully!";
+        }
+        
+        // Don't show alert to avoid blocking UI
+        console.log("User loaded:", found.name || found.mfc);
       } else {
-        alert("User not found.");
+        if (resultEl) {
+          resultEl.innerHTML = "User not found.";
+        }
+        console.log("User not found for:", inputName || inputMfc);
       }
     } catch (err) {
       console.error("Load failed:", err);
-      alert("Failed to load user.");
+      const resultEl = document.getElementById("result");
+      if (resultEl) {
+        resultEl.innerHTML = "Failed to load user.";
+      }
     }
   };
 
   // Initialize MASI button state
   updateMasiButton();
+
+  // Ensure inputs remain functional - periodic check
+  setInterval(() => {
+    if (form) {
+      const allInputs = form.querySelectorAll('input, select, textarea');
+      allInputs.forEach(input => {
+        // Only re-enable if they were accidentally disabled
+        if (input.disabled && !input.id.includes('masi_url')) {
+          input.disabled = false;
+        }
+        if (input.readOnly && input.type !== 'submit' && input.type !== 'reset') {
+          input.readOnly = false;
+        }
+      });
+    }
+  }, 1000);
 });
