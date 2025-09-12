@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbit Margin Rate Settings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Orbit Margin Rate Settings</h1>
+
+    <div>
+        <form id="freight_rates">
+
+
+            <button type="button" onclick="loadOrbit()">Load Orbit Margins</button>
+
+            <button type="submit">Save Orbit Margins</button>
+            <button type="reset">Reset</button>
+
+
+
+            <div class="margin_grid">
+                <div class="margin-row">
+                    <div>OA Variable Rate</div>
+                    <div>OA Minimum Flat $</div>
+                    <div>OA Additional Flat $</div>
+
+                    <div>DA Variable Rate</div>
+                    <div>DA Minimum Flat $</div>
+                    <div>DA Additional Flat $</div>
+
+                    <div>AQIS Variable Rate</div>
+                    <div>AQIS Minimum Flat $</div>
+                    <div>AQIS Additional Flat $</div>
+                </div>
+
+                <div class="margin-row" data-index="1">
+                    <!-- range 1 -->
+                    <input type="number" step="0.01" id="oa_v_rate" name="oa_v_rate">
+                    <input type="number" step="0.01" id="oa_min_flat_rate" name="oa_min_flat_rate">
+                    <input type="number" step="0.01" id="oa_min_add_rate" name="oa_min_add_rate">
+                    <input type="number" step="0.01" id="da_v_rate" name="da_v_rate">
+                    <input type="number" step="0.01" id="da_min_flat_rate" name="da_min_flat_rate">
+                    <input type="number" step="0.01" id="da_min_add_rate" name="da_min_add_rate">
+                    <input type="number" step="0.01" id="aqis_v_rate" name="aqis_v_rate">
+                    <input type="number" step="0.01" id="aqis_min_flat_rate" name="aqis_min_flat_rate">
+                    <input type="number" step="0.01" id="aqis_min_add_rate" name="aqis_min_add_rate">
+                </div>
+
+            </div>
+
+
+
+
+
+
+            <!-- Accessorial Charges -->
+            <h2>Accessorial Charges</h2>
+            <div>
+                <button type="button" id="addnRow">Add New Line</button>
+            </div>
+
+
+            <div class="trucking_grid">
+                <div>Name</div>
+                <div>Rate $</div>
+                <div>Minimum (flat) $</div>
+                <div>Rate Type</div>
+
+                <!-- range 1 -->
+                <input type="text" step="0.01" id="accessorial_name1" name="accessorial_name1">
+                <input type="number" step="0.01" id="accessorial_rate1" name="accessorial_rate1">
+                <input type="number" step="0.01" id="accessorial_min1" name="accessorial_min1">
+                <div>
+                    <input type="radio" id="accessorial_v_1" name="accessorial_v_1" value="variable">
+                    <label for="da_travel_type_v_1">Variable</label><br>
+                    <input type="radio" id="accessorial_f_1" name="accessorial_f_1" value="flat">
+                    <label for="da_travel_type_f_1">Flat</label>
+                </div>
+
+                <!-- range 2 -->
+                <input type="text" step="0.01" id="accessorial_name2" name="accessorial_name2">
+                <input type="number" step="0.01" id="accessorial_rate2" name="accessorial_rate2">
+                <input type="number" step="0.01" id="accessorial_min2" name="accessorial_min2">
+                <div>
+                    <input type="radio" id="accessorial_v_2" name="accessorial_v_2" value="variable">
+                    <label for="da_travel_type_v_2">Variable</label><br>
+                    <input type="radio" id="accessorial_f_2" name="accessorial_f_2" value="flat">
+                    <label for="da_travel_type_f_2">Flat</label>
+                </div>
+
+                <!-- range 3 -->
+                <input type="text" step="0.01" id="accessorial_name3" name="accessorial_name3">
+                <input type="number" step="0.01" id="accessorial_rate3" name="accessorial_rate3">
+                <input type="number" step="0.01" id="accessorial_min3" name="accessorial_min3">
+                <div>
+                    <input type="radio" id="accessorial_v_3" name="accessorial_v_3" value="variable">
+                    <label for="da_travel_type_v_3">Variable</label><br>
+                    <input type="radio" id="accessorial_f_3" name="accessorial_f_3" value="flat">
+                    <label for="da_travel_type_f_3">Flat</label>
+                </div>
+
+
+                <!-- range 4 -->
+                <input type="text" step="0.01" id="accessorial_name4" name="accessorial_name4">
+                <input type="number" step="0.01" id="accessorial_rate4" name="accessorial_rate4">
+                <input type="number" step="0.01" id="accessorial_min4" name="accessorial_min4">
+                <div>
+                    <input type="radio" id="accessorial_v_4" name="accessorial_v_4" value="variable">
+                    <label for="da_travel_type_v_4">Variable</label><br>
+                    <input type="radio" id="accessorial_f_4" name="accessorial_f_4" value="flat">
+                    <label for="da_travel_type_f_4">Flat</label>
+                </div>
+
+
+                <!-- range 5 -->
+                <input type="text" step="0.01" id="accessorial_name5" name="accessorial_name5">
+                <input type="number" step="0.01" id="accessorial_rate5" name="accessorial_rate5">
+                <input type="number" step="0.01" id="accessorial_min5" name="accessorial_min5">
+                <div>
+                    <input type="radio" id="accessorial_v_5" name="accessorial_v_5" value="variable">
+                    <label for="da_travel_type_v_5">Variable</label><br>
+                    <input type="radio" id="accessorial_f_5" name="accessorial_f_5" value="flat">
+                    <label for="da_travel_type_f_5">Flat</label>
+                </div>
+
+            </div>
+
+
+
+
+        </form>
+
+        <script src="margin-handler.js"></script>
+
+</body>
+
+</html>

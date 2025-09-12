@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>ORB1 - Groupage Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="quote.css" />
+  <link rel="icon" type="image/x-icon" href="icon.ico">
+
+
+</head>
+
+<body>
+  <h1>
+    Groupage AutoCalc <em><small><img src="media/orb1_logo.svg" width="100px">
+        <span style="color:#cd0000;">beta </span>0.2.80</small></em>
+    <a href="backend.html" id="openBackend"
+      style="display: inline-block; text-decoration: none; font-weight: normal; padding: 0.3rem 1rem;"
+      class="btn round">Open
+      Backend</a>
+  </h1>
+
+  <div class="grid">
+    <form id="dataForm">
+      <div class="grid2">
+        <h2>Customer Info</h2>
+        <button type="reset" class="btn reset hundred">Reset</button>
+
+        <div class="sap-line">Date</div>
+        <div class="input-row">
+          <input type="date" id="date_created" name="date_created" required class="txt_input mono hundred">
+        </div>
+
+
+
+        <div class="sap-line">Full Name*</div>
+        <div class="input-row">
+          <input type="text" id="name" name="name" required class="txt_input flat hundred">
+          <button type="button" onclick="loadUserByName()" class="btn load">Load</button>
+        </div>
+
+        <div class="sap-line">Email*</div>
+        <input type="email" id="email" name="email" required class="txt_input">
+        <div class="sap-line">Phone*</div>
+        <input type="tel" id="phone" name="phone" name="phone" required class="txt_input mono" inputmode="numeric">
+
+        <div class="sap-line">MASI job number*</div>
+        <div class="input-row">
+          <input type="text" id="mfc" name="mfc" required class="txt_input mono flat hundred" inputmode="numeric"
+            maxlength="8" pattern="\d{8}" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 8);">
+          <button type="button" id="masi_url" class="btn link">Open</button>
+          <button type="button" onclick="loadUserByName()" class="btn load">Load</button>
+        </div>
+
+
+
+        <div class="sap-line">Version History</div>
+        <!-- <div class="input-row">
+          <div id="version-nav" style="display:flex; align-items:center;">
+            <button id="verPrev" type="button" title="Previous version" class="btn" style="border-radius: 0px !important;">◀</button>
+            <input id="verIndicator" class="txt_input flat mono" readonly value="#" placeholder="Version Number" style="text-align: center;">
+            <button id="verNext" type="button" title="Next version" class="btn">▶</button>
+          </div>
+        </div> -->
+
+        <div class="input-row">
+          <div id="version-nav">
+            <button id="verPrev" type="button" class="btn" style="border-radius: 0px !important;">◀</button>
+            <input id="verIndicator" class="txt_input flat mono" readonly value="#" style="text-align:center">
+            <button id="verNext" type="button" class="btn">▶</button>
+          </div>
+        </div>
+
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+
+        <h2>Origin Address</h2>
+        <div>&nbsp;</div>
+
+        <div class="sap-line">Street</div>
+        <input type="text" id="oa_street" name="oa_street" class="txt_input">
+        <div class="sap-line">City*</div>
+        <input type="text" id="oa_city" name="oa_city" required class="txt_input">
+        <div class="sap-line">ZIP Code</div>
+        <div class="input-row">
+          <input type="text" id="oa_zip" name="oa_zip" class="txt_input flat mono hundred">
+          <button type="button" id="btn_get_oa_zip" class="btn load">Get</button>
+        </div>
+
+        <div class="sap-line">Province*</div>
+        <select id="oa_province" name="oa_province" required class="drop">
+          <option value="">-- Please choose --</option>
+          <option value="on">ON</option>
+          <option value="qc">QC</option>
+          <option value="ns">NS</option>
+          <option value="nb">NB</option>
+          <option value="mb">MB</option>
+          <option value="bc">BC</option>
+          <option value="pe">PE</option>
+          <option value="sk">SK</option>
+          <option value="ab">AB</option>
+          <option value="nl">NL</option>
+          <option value="nt">NT</option>
+          <option value="yt">YT</option>
+          <option value="nu">NU</option>
+        </select>
+
+        <div class="sap-line">Building Type*</div>
+
+        <select id="oa_building_type" name="oa_building_type" required class="drop">
+          <option value="house">House</option>
+          <option value="apt">Apartment</option>
+        </select>
+
+
+        <div class="sap-line">Distance*</div>
+        <div class="input-row">
+          <input type="number" id="distance" name="distance" required class="txt_input flat mono hundred" maxlength="4"
+            pattern="\d{4}" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 4);">
+          <button type="button" id="distance_get" class="btn load">Get</button> &nbsp;km
+        </div>
+
+
+        <div class="sap-line">Packing type*</div>
+        <select id="pack" name="pack" required class="drop">
+          <option value="full">Full Service</option>
+          <option value="pbo">PBO</option>
+          <option value="wrap">Wrap no Pack</option>
+          <option value="dropoff">Drop off at Warehouse</option>
+        </select>
+
+        <div class="sap-line">Accessorial Charges</div>
+        <div>
+          <label class="custom-checkbox">
+            <input type="checkbox" id="accessorial_chx_1" name="accessorial_chx_1">
+            <span class="checkmark"></span>
+            <span>Accessorial 1</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="checkbox" id="accessorial_chx_2" name="accessorial_chx_2">
+            <span class="checkmark"></span>
+            <span>Accessorial 2</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="checkbox" id="accessorial_chx_3" name="accessorial_chx_3">
+            <span class="checkmark"></span>
+            <span>Accessorial 3</span>
+          </label>
+        </div>
+        <div></div>
+        <div>
+          <label class="custom-checkbox">
+            <input type="checkbox" id="accessorial_chx_4" name="accessorial_chx_4">
+            <span class="checkmark"></span>
+            <span>Accessorial 4</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="checkbox" id="accessorial_chx_5" name="accessorial_chx_5">
+            <span class="checkmark"></span>
+            <span>Accessorial 5</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="checkbox" id="accessorial_chx_custom" name="accessorial_chx_custom">
+            <span class="checkmark"></span></label>
+          <input type="text" id="acx" name="acx" class="txt_input flat hundred" placeholder="Description">
+          <input type="number" id="acx" name="acx" class="txt_input mono flat hundred" placeholder="$ Price">
+
+        </div>
+
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+
+
+
+
+        <h2>Destination Address</h2>
+        <div>&nbsp;</div>
+
+        <div class="sap-line">Street</div>
+        <input type="text" id="da_street" name="da_street" class="txt_input">
+
+        <div class="sap-line">City*</div>
+        <input type="text" id="da_city" name="da_city" required class="txt_input">
+        <div class="sap-line">Country*</div>
+        <select id="da_country" name="da_country" required class="drop">
+          <option value="">-- Please choose --</option>
+
+          <!-- Western Europe -->
+          <option value="be">Belgium</option>
+          <option value="lu">Luxembourg</option>
+          <option value="nl">Netherlands</option>
+          <option value="fr_north">
+            France (north of Caen - Basel line)
+          </option>
+          <option value="de">Germany</option>
+
+          <!-- Central Europe -->
+          <option value="at">Austria</option>
+          <option value="cz">Czech</option>
+          <option value="dk">Denmark</option>
+          <option value="fr_south">
+            France (south of Caen - Basel line)
+          </option>
+          <option value="mc">Monaco</option>
+          <option value="ch">Switzerland</option>
+
+          <!-- Eastern/Central Europe -->
+          <option value="hr">Croatia</option>
+          <option value="ie">Ireland</option>
+          <option value="it_north">Italy (above Rome)</option>
+          <option value="pt">Portugal</option>
+          <option value="es">Spain</option>
+
+          <option value="hu">Hungary</option>
+          <option value="no">Norway (south)</option>
+          <option value="pl">Poland</option>
+          <option value="si">Slovenia</option>
+          <option value="se">Sweden (south)</option>
+          <option value="sk">Slovakia</option>
+
+
+
+          <!-- Southern & Eastern Europe -->
+          <option value="balearic">Balearic Islands</option>
+          <option value="ee">Estonia</option>
+          <option value="bg">Bulgaria</option>
+          <option value="fi">Finland south</option>
+          <option value="gr">Greece (except islands)</option>
+          <option value="lv">Latvia</option>
+          <option value="lt">Lithuania</option>
+          <option value="ro">Romania</option>
+          <option value="rs">Serbia</option>
+          <option value="ba">Bosnia</option>
+          <option value="me">Montenegro</option>
+          <option value="al">Albania</option>
+          <option value="it_south">Southern Italy (+ Rome & Sicily)</option>
+
+
+          <option value="mt">Malta</option>
+          <option value="cy">Cyprus</option>
+
+          <!-- Not Europe -->
+          <option value="dub">Dubai, UAE</option>
+          <option value="abu">Abu Dhabi, UAE</option>
+          <option value="uk">UK</option>
+          <option value="in">India</option>
+
+
+
+          <!-- <option value="au">Australia</option>
+          <option value="nz">New Zealand</option>
+          <option value="ind">India</option> -->
+
+
+        </select>
+
+        <div class="sap-line">Building type*</div>
+        <select id="da_building_type" name="da_building_type" required class="drop">
+          <option value="house">House</option>
+          <option value="apt">Apartment</option>
+        </select>
+
+
+        <div class="sap-line">Survey</div>
+        <div class="input-row">
+          SRV- <input type="number" id="survey" name="survey" class="txt_input mono hundred" maxlength="4"
+            pattern="\d{4}" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 4);">
+        </div>
+
+
+        <div class="sap-line">Volume*</div>
+        <div class="input-row">
+          <input type="number" step="0.1" id="volume" name="volume" required class="txt_input mono flat hundred">
+          <select id="units" name="units" required class="drop">
+            <option value="cuft">cuft</option>
+            <option value="cbm">cbm</option>
+          </select>
+        </div>
+
+
+
+        <button type="submit" id="saveBtn" class="btn save hundred">Save User & Calculate</button>
+        <div>&nbsp;</div>
+
+    </form>
+
+
+  </div>
+
+
+
+  <div id="right">
+    <div id="result">RESULT</div>
+
+
+    <div id="quote">
+      <div id="quoteButtons"></div>
+      <div id="quotePreview">QUOTE</div>
+    </div>
+
+
+
+
+
+
+
+  </div>
+
+
+
+  <!-- Popup Modal -->
+  <div id="gifModal"
+    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+     background:rgba(0,0,0,0.25); z-index:9999; justify-content:center; align-items:center; backdrop-filter: blur(10px);">
+    <div style="background:#fff; padding:1rem; border-radius:8px; text-align:center;">
+      <img src="media/jp.gif" alt="Popup Animation" style="max-width:100%; height:auto;">
+      <br><br>
+      <button id="closeGif" class="btn round">Close</button>
+    </div>
+  </div>
+
+  <!-- Confirm Delete Modal -->
+  <div id="confirmModal"
+    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+     background:rgba(0,0,0,0.25); z-index:9999; justify-content:center; align-items:center; backdrop-filter: blur(10px);">
+    <div style="background:#fff; color:#222; padding:1rem 1.25rem; border-radius:10px; text-align:center;">
+      <div style="font-size:6rem;">⚠️</div>
+      <div style="font-size:1.1rem; font-weight:bold; margin:.25rem 0">Are you sure you want to delete this
+        version?</div>
+      <div style="opacity:.7; margin-bottom:1rem;">You can’t undo this action.</div>
+      <div style="display:flex; gap:.75rem; justify-content:center;">
+        <button id="confirmCancel" class="btn round" type="button" style="width:8rem;">Cancel</button>
+        <button id="confirmDelete" class="btn reset round" type="button" style="width:8rem;">Delete</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="form-handler.js"></script>
+  <script src="calculator.js"></script>
+  <script src="quote.js"></script>
+  <script src="helper.js"></script>
+
+</body>
+
+</html>

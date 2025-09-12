@@ -1,0 +1,266 @@
+[
+  {
+    "country_name": "nl",
+    "minimums": {
+      "freight": "300"
+    },
+    "freight_fcl20": "880",
+    "freight_fcl20_currency": "usd",
+    "freight_fcl20_dthc": "350",
+    "freight_fcl20_dthc_currency": "eur",
+    "freight_fcl40": "1260",
+    "freight_fcl40_currency": "usd",
+    "freight_fcl40_dthc": "350",
+    "freight_fcl40_dthc_currency": "eur",
+    "freight_drayage": "800",
+    "freight_drayage_currency": "cad",
+    "rates": [
+      {
+        "min": "0",
+        "max": "200",
+        "freight_rate": "3.80",
+        "freight_rate_type": "variable",
+        "markup": "1000",
+        "markup_type": "flat"
+      },
+      {
+        "min": "201",
+        "max": "300",
+        "freight_rate": "3.17",
+        "freight_rate_type": "variable",
+        "markup": "1200",
+        "markup_type": "flat"
+      },
+      {
+        "min": "301",
+        "max": "400",
+        "freight_rate": "2.92",
+        "freight_rate_type": "variable",
+        "markup": "1300",
+        "markup_type": "flat"
+      },
+      {
+        "min": "401",
+        "max": "600",
+        "freight_rate": "2.71",
+        "freight_rate_type": "variable",
+        "markup": "1400",
+        "markup_type": "flat"
+      },
+      {
+        "min": "601",
+        "max": "900",
+        "freight_rate": "2.38",
+        "freight_rate_type": "variable",
+        "markup": "1600",
+        "markup_type": "flat"
+      },
+      {
+        "min": "901",
+        "max": "9999",
+        "freight_rate": "2.24",
+        "freight_rate_type": "variable",
+        "markup": "1700",
+        "markup_type": "flat"
+      }
+    ]
+  },
+  {
+    "country_name": "uae",
+    "minimums": {
+      "freight": "300"
+    },
+    "freight_fcl20": "2026",
+    "freight_fcl20_currency": "usd",
+    "freight_fcl20_dthc": "550",
+    "freight_fcl20_dthc_currency": "usd",
+    "freight_fcl40": "2695",
+    "freight_fcl40_currency": "usd",
+    "freight_fcl40_dthc": "650",
+    "freight_fcl40_dthc_currency": "usd",
+    "freight_drayage": "800",
+    "freight_drayage_currency": "cad",
+    "rates": [
+      {
+        "min": "0",
+        "max": "200",
+        "freight_rate": "5.31",
+        "freight_rate_type": "variable",
+        "markup": "1250",
+        "markup_type": "flat"
+      },
+      {
+        "min": "201",
+        "max": "300",
+        "freight_rate": "4.92",
+        "freight_rate_type": "variable",
+        "markup": "1350",
+        "markup_type": "flat"
+      },
+      {
+        "min": "301",
+        "max": "400",
+        "freight_rate": "4.74",
+        "freight_rate_type": "variable",
+        "markup": "1400",
+        "markup_type": "flat"
+      },
+      {
+        "min": "401",
+        "max": "600",
+        "freight_rate": "4.43",
+        "freight_rate_type": "variable",
+        "markup": "1500",
+        "markup_type": "flat"
+      },
+      {
+        "min": "601",
+        "max": "900",
+        "freight_rate": "4.15",
+        "freight_rate_type": "variable",
+        "markup": "1600",
+        "markup_type": "flat"
+      },
+      {
+        "min": "901",
+        "max": "9999",
+        "freight_rate": "3.69",
+        "freight_rate_type": "variable",
+        "markup": "1800",
+        "markup_type": "flat"
+      }
+    ]
+  },
+  {
+    "country_name": "uk",
+    "minimums": {
+      "freight": "300"
+    },
+    "freight_fcl20": "852",
+    "freight_fcl20_currency": "usd",
+    "freight_fcl20_dthc": "280",
+    "freight_fcl20_dthc_currency": "gbp",
+    "freight_fcl40": "1265",
+    "freight_fcl40_currency": "usd",
+    "freight_fcl40_dthc": "280",
+    "freight_fcl40_dthc_currency": "gbp",
+    "freight_drayage": "800",
+    "freight_drayage_currency": "cad",
+    "rates": [
+      {
+        "min": "0",
+        "max": "200",
+        "freight_rate": "3.76",
+        "freight_rate_type": "variable",
+        "markup": "1000",
+        "markup_type": "flat"
+      },
+      {
+        "min": "201",
+        "max": "300",
+        "freight_rate": "3.13",
+        "freight_rate_type": "variable",
+        "markup": "1200",
+        "markup_type": "flat"
+      },
+      {
+        "min": "301",
+        "max": "400",
+        "freight_rate": "2.89",
+        "freight_rate_type": "variable",
+        "markup": "1300",
+        "markup_type": "flat"
+      },
+      {
+        "min": "401",
+        "max": "600",
+        "freight_rate": "2.69",
+        "freight_rate_type": "variable",
+        "markup": "1400",
+        "markup_type": "flat"
+      },
+      {
+        "min": "601",
+        "max": "900",
+        "freight_rate": "2.35",
+        "freight_rate_type": "variable",
+        "markup": "1600",
+        "markup_type": "flat"
+      },
+      {
+        "min": "901",
+        "max": "9999",
+        "freight_rate": "2.21",
+        "freight_rate_type": "variable",
+        "markup": "1700",
+        "markup_type": "flat"
+      }
+    ]
+  },
+  {
+    "country_name": "in",
+    "minimums": {
+      "freight": "400"
+    },
+    "freight_fcl20": "2000",
+    "freight_fcl20_currency": "usd",
+    "freight_fcl20_dthc": "750",
+    "freight_fcl20_dthc_currency": "usd",
+    "freight_fcl40": "2421",
+    "freight_fcl40_currency": "usd",
+    "freight_fcl40_dthc": "850",
+    "freight_fcl40_dthc_currency": "usd",
+    "freight_drayage": "800",
+    "freight_drayage_currency": "cad",
+    "rates": [
+      {
+        "min": "0",
+        "max": "200",
+        "freight_rate": "9.39",
+        "freight_rate_type": "variable",
+        "markup": "600",
+        "markup_type": "variable"
+      },
+      {
+        "min": "201",
+        "max": "300",
+        "freight_rate": "9.01",
+        "freight_rate_type": "variable",
+        "markup": "625",
+        "markup_type": "variable"
+      },
+      {
+        "min": "301",
+        "max": "400",
+        "freight_rate": "8.67",
+        "freight_rate_type": "variable",
+        "markup": "650",
+        "markup_type": "variable"
+      },
+      {
+        "min": "401",
+        "max": "600",
+        "freight_rate": "8.05",
+        "freight_rate_type": "variable",
+        "markup": "700",
+        "markup_type": "variable"
+      },
+      {
+        "min": "601",
+        "max": "900",
+        "freight_rate": "6.26",
+        "freight_rate_type": "variable",
+        "markup": "900",
+        "markup_type": "variable"
+      },
+      {
+        "min": "901",
+        "max": "9999",
+        "freight_rate": "4.83",
+        "freight_rate_type": "variable",
+        "markup": "1350",
+        "markup_type": "flat"
+      }
+    ]
+  }
+]

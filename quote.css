@@ -1,0 +1,124 @@
+@font-face {
+    font-family: "Nimbus";
+    src: url("media/nimr.otf");
+}
+
+@font-face {
+    font-family: "Nimbus";
+    font-weight: bold;
+    src: url("media/nimb.otf");
+}
+
+@font-face {
+    font-family: "Nimbus";
+    font-style: italic;
+    src: url("media/nimi.otf");
+}
+
+@font-face {
+    font-family: "Nimbus";
+    font-weight: bold;
+    font-style: italic;
+    src: url("media/nimz.otf");
+}
+
+/* @font-face {
+  font-family: "Nimbus";
+  font-weight: lighter;
+  src: url("media/nimnar.otf");
+} */
+
+.quote {
+    padding: 1rem;
+    font-family: Nimbus, sans-serif !important;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+
+.quote * {
+    font-family: Nimbus, sans-serif !important;
+    font-size: 0.9rem;
+}
+
+
+.quote_table {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: Nimbus, sans-serif !important;
+    padding-bottom: .75rem;
+}
+
+
+
+.quote h2 {
+    text-align: center !important;
+    font-size: 2rem;
+    font-family: Nimbus, sans-serif !important;
+}
+
+.quote h3 {
+    font-size: 1rem;
+    font-family: Nimbus, sans-serif !important;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.quote p {
+    font-family: Nimbus, sans-serif !important;
+}
+
+.quote ul,
+.quote ol {
+    padding-left: 2rem !important;
+    padding-bottom: 1rem !important;
+}
+
+
+.quote .header * {
+    font-size: 0.75rem !important;
+}
+
+.quote .header {
+    font-size: 0.75rem !important;
+    padding-left: 8rem !important;
+}
+
+
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #quote,
+    #quote * {
+        visibility: visible;
+    }
+
+    #quote {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    .page-break {
+        page-break-before: always;
+        /* or page-break-after */
+        break-before: page;
+        /* modern syntax */
+    }
+
+    #printPdfBtn {
+        display: none !important;
+    }
+}
+
+@media screen {
+    .page-break {
+        display: none;
+        /* hide them in normal HTML view */
+    }
+}

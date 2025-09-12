@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origin Rate Settings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Origin Rate Settings</h1>
+
+    <div>
+        <form id="oa_rates">
+
+            <label>Company: <select id="oa_company" name="oa_company">
+                    <option value="">-- Please choose --</option>
+                </select></label>
+            <button type="button" onclick="loadCompanyByName()">Load OA Company</button>
+
+            <label>Company name: <input type="text" id="oa_company_name"></label>
+            <label>Company address: <input type="text" id="oa_company_address"></label>
+
+            <label>Assigned Province: <input type="text" id="oa_assigned_province"></label>
+
+
+            <button type="submit">Save OA Company Rates</button>
+            <button type="reset">Reset</button>
+
+
+
+
+            <div class="rate_grid">
+                <div>Min (cuft)</div>
+                <div>Max (cuft)</div>
+                <div>Full service $
+                    <div>
+                        <label>Admin fee: <input type="number" step="0.01" id="full_minimum"
+                                name="full_minimum"></label>
+                    </div>
+                </div>
+
+                <div>Rate Type</div>
+                <div>Wrap no Pack $
+                    <div>
+                        <label>Admin fee: <input type="number" step="0.01" id="wrap_minimum"
+                                name="wrap_minimum"></label>
+                    </div>
+                </div>
+                <div>Rate Type</div>
+                <div>PBO $
+                    <div>
+                        <label>Admin fee: <input type="number" step="0.01" id="pbo_minimum" name="pbo_minimum"></label>
+                    </div>
+                </div>
+                <div>Rate Type</div>
+                <div>Drop off at WH $
+                    <div>
+                        <label>Admin fee: <input type="number" step="0.01" id="dropoff_minimum"
+                                name="dropoff_minimum"></label>
+                    </div>
+                </div>
+                <div>Rate Type</div>
+                <div>Additional $ / Markup multiplier</div>
+                <div>Markup Type</div>
+
+                <!-- range 1 -->
+                <input type="number" step="0.01" id="min1" name="min1">
+                <input type="number" step="0.01" id="max1" name="max1">
+
+                <input type="number" step="0.01" id="full_rate1" name="full_rate1">
+                <div>
+                    <input type="radio" id="oa_full_rate_type_v_1" name="oa_full_rate_type_1" value="variable">
+                    <label for="oa_full_rate_type_v_1">Variable</label><br>
+                    <input type="radio" id="oa_full_rate_type_f_1" name="oa_full_rate_type_1" value="flat">
+                    <label for="oa_full_rate_type_f_1">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="wrap_rate1" name="wrap_rate1">
+                <div>
+                    <input type="radio" id="oa_wrap_rate_type_v_1" name="oa_wrap_rate_type_1" value="variable">
+                    <label for="oa_wrap_rate_type_v_1">Variable</label><br>
+                    <input type="radio" id="oa_wrap_rate_type_f_1" name="oa_wrap_rate_type_1" value="flat">
+                    <label for="oa_wrap_rate_type_f_1">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="pbo_rate1" name="pbo_rate1">
+                <div>
+                    <input type="radio" id="oa_pbo_rate_type_v_1" name="oa_pbo_rate_type_1" value="variable">
+                    <label for="oa_pbo_rate_type_v_1">Variable</label><br>
+                    <input type="radio" id="oa_pbo_rate_type_f_1" name="oa_pbo_rate_type_1" value="flat">
+                    <label for="oa_pbo_rate_type_f_1">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="dropoff_rate1" name="dropoff_rate1">
+                <div>
+                    <input type="radio" id="oa_dropoff_rate_type_v_1" name="oa_dropoff_rate_type_1" value="variable">
+                    <label for="oa_dropoff_rate_type_v_1">Variable</label><br>
+                    <input type="radio" id="oa_dropoff_rate_type_f_1" name="oa_dropoff_rate_type_1" value="flat">
+                    <label for="oa_dropoff_rate_type_f_1">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="markup_rate1" name="markup_rate1">
+                <div>
+                    <input type="radio" id="oa_markup_rate_type_v_1" name="oa_markup_rate_type_1" value="variable">
+                    <label for="oa_markup_rate_type_v_1">Multip.</label><br>
+                    <input type="radio" id="oa_markup_rate_type_f_1" name="oa_markup_rate_type_1" value="flat">
+                    <label for="oa_markup_rate_type_f_1">Flat</label>
+                </div>
+
+
+                <!-- range 2 -->
+                <input type="number" step="0.01" id="min2" name="min2">
+                <input type="number" step="0.01" id="max2" name="max2">
+
+                <input type="number" step="0.01" id="full_rate2" name="full_rate2">
+                <div>
+                    <input type="radio" id="oa_full_rate_type_v_2" name="oa_full_rate_type_2" value="variable">
+                    <label for="oa_full_rate_type_v_2">Variable</label><br>
+                    <input type="radio" id="oa_full_rate_type_f_2" name="oa_full_rate_type_2" value="flat">
+                    <label for="oa_full_rate_type_f_2">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="wrap_rate2" name="wrap_rate2">
+                <div>
+                    <input type="radio" id="oa_wrap_rate_type_v_2" name="oa_wrap_rate_type_2" value="variable">
+                    <label for="oa_wrap_rate_type_v_2">Variable</label><br>
+                    <input type="radio" id="oa_wrap_rate_type_f_2" name="oa_wrap_rate_type_2" value="flat">
+                    <label for="oa_wrap_rate_type_f_2">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="pbo_rate2" name="pbo_rate2">
+                <div>
+                    <input type="radio" id="oa_pbo_rate_type_v_2" name="oa_pbo_rate_type_2" value="variable">
+                    <label for="oa_pbo_rate_type_v_2">Variable</label><br>
+                    <input type="radio" id="oa_pbo_rate_type_f_2" name="oa_pbo_rate_type_2" value="flat">
+                    <label for="oa_pbo_rate_type_f_2">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="dropoff_rate2" name="dropoff_rate2">
+                <div>
+                    <input type="radio" id="oa_dropoff_rate_type_v_2" name="oa_dropoff_rate_type_2" value="variable">
+                    <label for="oa_dropoff_rate_type_v_2">Variable</label><br>
+                    <input type="radio" id="oa_dropoff_rate_type_f_2" name="oa_dropoff_rate_type_2" value="flat">
+                    <label for="oa_dropoff_rate_type_f_2">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="markup_rate2" name="markup_rate2">
+                <div>
+                    <input type="radio" id="oa_markup_rate_type_v_2" name="oa_markup_rate_type_2" value="variable">
+                    <label for="oa_markup_rate_type_v_2">Multip.</label><br>
+                    <input type="radio" id="oa_markup_rate_type_f_2" name="oa_markup_rate_type_2" value="flat">
+                    <label for="oa_markup_rate_type_f_2">Flat</label>
+                </div>
+
+
+                <!-- range 3 -->
+                <input type="number" step="0.01" id="min3" name="min3">
+                <input type="number" step="0.01" id="max3" name="max3">
+
+                <input type="number" step="0.01" id="full_rate3" name="full_rate3">
+                <div>
+                    <input type="radio" id="oa_full_rate_type_v_3" name="oa_full_rate_type_3" value="variable">
+                    <label for="oa_full_rate_type_v_3">Variable</label><br>
+                    <input type="radio" id="oa_full_rate_type_f_3" name="oa_full_rate_type_3" value="flat">
+                    <label for="oa_full_rate_type_f_3">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="wrap_rate3" name="wrap_rate3">
+                <div>
+                    <input type="radio" id="oa_wrap_rate_type_v_3" name="oa_wrap_rate_type_3" value="variable">
+                    <label for="oa_wrap_rate_type_v_3">Variable</label><br>
+                    <input type="radio" id="oa_wrap_rate_type_f_3" name="oa_wrap_rate_type_3" value="flat">
+                    <label for="oa_wrap_rate_type_f_3">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="pbo_rate3" name="pbo_rate3">
+                <div>
+                    <input type="radio" id="oa_pbo_rate_type_v_3" name="oa_pbo_rate_type_3" value="variable">
+                    <label for="oa_pbo_rate_type_v_3">Variable</label><br>
+                    <input type="radio" id="oa_pbo_rate_type_f_3" name="oa_pbo_rate_type_3" value="flat">
+                    <label for="oa_pbo_rate_type_f_3">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="dropoff_rate3" name="dropoff_rate3">
+                <div>
+                    <input type="radio" id="oa_dropoff_rate_type_v_3" name="oa_dropoff_rate_type_3" value="variable">
+                    <label for="oa_dropoff_rate_type_v_3">Variable</label><br>
+                    <input type="radio" id="oa_dropoff_rate_type_f_3" name="oa_dropoff_rate_type_3" value="flat">
+                    <label for="oa_dropoff_rate_type_f_3">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="markup_rate3" name="markup_rate3">
+                <div>
+                    <input type="radio" id="oa_markup_rate_type_v_3" name="oa_markup_rate_type_3" value="variable">
+                    <label for="oa_markup_rate_type_v_3">Multip.</label><br>
+                    <input type="radio" id="oa_markup_rate_type_f_3" name="oa_markup_rate_type_3" value="flat">
+                    <label for="oa_markup_rate_type_f_3">Flat</label>
+                </div>
+
+
+                <!-- range 4 -->
+                <input type="number" step="0.01" id="min4" name="min4">
+                <input type="number" step="0.01" id="max4" name="max4">
+
+                <input type="number" step="0.01" id="full_rate4" name="full_rate4">
+                <div>
+                    <input type="radio" id="oa_full_rate_type_v_4" name="oa_full_rate_type_4" value="variable">
+                    <label for="oa_full_rate_type_v_4">Variable</label><br>
+                    <input type="radio" id="oa_full_rate_type_f_4" name="oa_full_rate_type_4" value="flat">
+                    <label for="oa_full_rate_type_f_4">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="wrap_rate4" name="wrap_rate4">
+                <div>
+                    <input type="radio" id="oa_wrap_rate_type_v_4" name="oa_wrap_rate_type_4" value="variable">
+                    <label for="oa_wrap_rate_type_v_4">Variable</label><br>
+                    <input type="radio" id="oa_wrap_rate_type_f_4" name="oa_wrap_rate_type_4" value="flat">
+                    <label for="oa_wrap_rate_type_f_4">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="pbo_rate4" name="pbo_rate4">
+                <div>
+                    <input type="radio" id="oa_pbo_rate_type_v_4" name="oa_pbo_rate_type_4" value="variable">
+                    <label for="oa_pbo_rate_type_v_4">Variable</label><br>
+                    <input type="radio" id="oa_pbo_rate_type_f_4" name="oa_pbo_rate_type_4" value="flat">
+                    <label for="oa_pbo_rate_type_f_4">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="dropoff_rate4" name="dropoff_rate4">
+                <div>
+                    <input type="radio" id="oa_dropoff_rate_type_v_4" name="oa_dropoff_rate_type_4" value="variable">
+                    <label for="oa_dropoff_rate_type_v_4">Variable</label><br>
+                    <input type="radio" id="oa_dropoff_rate_type_f_4" name="oa_dropoff_rate_type_4" value="flat">
+                    <label for="oa_dropoff_rate_type_f_4">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="markup_rate4" name="markup_rate4">
+                <div>
+                    <input type="radio" id="oa_markup_rate_type_v_4" name="oa_markup_rate_type_4" value="variable">
+                    <label for="oa_markup_rate_type_v_4">Multip.</label><br>
+                    <input type="radio" id="oa_markup_rate_type_f_4" name="oa_markup_rate_type_4" value="flat">
+                    <label for="oa_markup_rate_type_f_4">Flat</label>
+                </div>
+
+
+                <!-- range 5 -->
+                <input type="number" step="0.01" id="min5" name="min5">
+                <input type="number" step="0.01" id="max5" name="max5">
+
+                <input type="number" step="0.01" id="full_rate5" name="full_rate5">
+                <div>
+                    <input type="radio" id="oa_full_rate_type_v_5" name="oa_full_rate_type_5" value="variable">
+                    <label for="oa_full_rate_type_v_5">Variable</label><br>
+                    <input type="radio" id="oa_full_rate_type_f_5" name="oa_full_rate_type_5" value="flat">
+                    <label for="oa_full_rate_type_f_5">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="wrap_rate5" name="wrap_rate5">
+                <div>
+                    <input type="radio" id="oa_wrap_rate_type_v_5" name="oa_wrap_rate_type_5" value="variable">
+                    <label for="oa_wrap_rate_type_v_5">Variable</label><br>
+                    <input type="radio" id="oa_wrap_rate_type_f_5" name="oa_wrap_rate_type_5" value="flat">
+                    <label for="oa_wrap_rate_type_f_5">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="pbo_rate5" name="pbo_rate5">
+                <div>
+                    <input type="radio" id="oa_pbo_rate_type_v_5" name="oa_pbo_rate_type_5" value="variable">
+                    <label for="oa_pbo_rate_type_v_5">Variable</label><br>
+                    <input type="radio" id="oa_pbo_rate_type_f_5" name="oa_pbo_rate_type_5" value="flat">
+                    <label for="oa_pbo_rate_type_f_5">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="dropoff_rate5" name="dropoff_rate5">
+                <div>
+                    <input type="radio" id="oa_dropoff_rate_type_v_5" name="oa_dropoff_rate_type_5" value="variable">
+                    <label for="oa_dropoff_rate_type_v_5">Variable</label><br>
+                    <input type="radio" id="oa_dropoff_rate_type_f_5" name="oa_dropoff_rate_type_5" value="flat">
+                    <label for="oa_dropoff_rate_type_f_5">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="markup_rate5" name="markup_rate5">
+                <div>
+                    <input type="radio" id="oa_markup_rate_type_v_5" name="oa_markup_rate_type_5" value="variable">
+                    <label for="oa_markup_rate_type_v_5">Multip.</label><br>
+                    <input type="radio" id="oa_markup_rate_type_f_5" name="oa_markup_rate_type_5" value="flat">
+                    <label for="oa_markup_rate_type_f_5">Flat</label>
+                </div>
+
+
+                <!-- range 6 -->
+                <input type="number" step="0.01" id="min6" name="min6">
+                <input type="number" step="0.01" id="max6" name="max6">
+
+                <input type="number" step="0.01" id="full_rate6" name="full_rate6">
+                <div>
+                    <input type="radio" id="oa_full_rate_type_v_6" name="oa_full_rate_type_6" value="variable">
+                    <label for="oa_full_rate_type_v_6">Variable</label><br>
+                    <input type="radio" id="oa_full_rate_type_f_6" name="oa_full_rate_type_6" value="flat">
+                    <label for="oa_full_rate_type_f_6">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="wrap_rate6" name="wrap_rate6">
+                <div>
+                    <input type="radio" id="oa_wrap_rate_type_v_6" name="oa_wrap_rate_type_6" value="variable">
+                    <label for="oa_wrap_rate_type_v_6">Variable</label><br>
+                    <input type="radio" id="oa_wrap_rate_type_f_6" name="oa_wrap_rate_type_6" value="flat">
+                    <label for="oa_wrap_rate_type_f_6">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="pbo_rate6" name="pbo_rate6">
+                <div>
+                    <input type="radio" id="oa_pbo_rate_type_v_6" name="oa_pbo_rate_type_6" value="variable">
+                    <label for="oa_pbo_rate_type_v_6">Variable</label><br>
+                    <input type="radio" id="oa_pbo_rate_type_f_6" name="oa_pbo_rate_type_6" value="flat">
+                    <label for="oa_pbo_rate_type_f_6">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="dropoff_rate6" name="dropoff_rate6">
+                <div>
+                    <input type="radio" id="oa_dropoff_rate_type_v_6" name="oa_dropoff_rate_type_6" value="variable">
+                    <label for="oa_dropoff_rate_type_v_6">Variable</label><br>
+                    <input type="radio" id="oa_dropoff_rate_type_f_6" name="oa_dropoff_rate_type_6" value="flat">
+                    <label for="oa_dropoff_rate_type_f_6">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="markup_rate6" name="markup_rate6">
+                <div>
+                    <input type="radio" id="oa_markup_rate_type_v_6" name="oa_markup_rate_type_6" value="variable">
+                    <label for="oa_markup_rate_type_v_6">Multip.</label><br>
+                    <input type="radio" id="oa_markup_rate_type_f_6" name="oa_markup_rate_type_6" value="flat">
+                    <label for="oa_markup_rate_type_f_6">Flat</label>
+                </div>
+
+
+                <!-- range 7 -->
+                <input type="number" step="0.01" id="min7" name="min7">
+                <input type="number" step="0.01" id="max7" name="max7">
+
+                <input type="number" step="0.01" id="full_rate7" name="full_rate7">
+                <div>
+                    <input type="radio" id="oa_full_rate_type_v_7" name="oa_full_rate_type_7" value="variable">
+                    <label for="oa_full_rate_type_v_7">Variable</label><br>
+                    <input type="radio" id="oa_full_rate_type_f_7" name="oa_full_rate_type_7" value="flat">
+                    <label for="oa_full_rate_type_f_7">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="wrap_rate7" name="wrap_rate7">
+                <div>
+                    <input type="radio" id="oa_wrap_rate_type_v_7" name="oa_wrap_rate_type_7" value="variable">
+                    <label for="oa_wrap_rate_type_v_7">Variable</label><br>
+                    <input type="radio" id="oa_wrap_rate_type_f_7" name="oa_wrap_rate_type_7" value="flat">
+                    <label for="oa_wrap_rate_type_f_7">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="pbo_rate7" name="pbo_rate7">
+                <div>
+                    <input type="radio" id="oa_pbo_rate_type_v_7" name="oa_pbo_rate_type_7" value="variable">
+                    <label for="oa_pbo_rate_type_v_7">Variable</label><br>
+                    <input type="radio" id="oa_pbo_rate_type_f_7" name="oa_pbo_rate_type_7" value="flat">
+                    <label for="oa_pbo_rate_type_f_7">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="dropoff_rate7" name="dropoff_rate7">
+                <div>
+                    <input type="radio" id="oa_dropoff_rate_type_v_7" name="oa_dropoff_rate_type_7" value="variable">
+                    <label for="oa_dropoff_rate_type_v_7">Variable</label><br>
+                    <input type="radio" id="oa_dropoff_rate_type_f_7" name="oa_dropoff_rate_type_7" value="flat">
+                    <label for="oa_dropoff_rate_type_f_7">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="markup_rate7" name="markup_rate7">
+                <div>
+                    <input type="radio" id="oa_markup_rate_type_v_7" name="oa_markup_rate_type_7" value="variable">
+                    <label for="oa_markup_rate_type_v_7">Multip.</label><br>
+                    <input type="radio" id="oa_markup_rate_type_f_7" name="oa_markup_rate_type_7" value="flat">
+                    <label for="oa_markup_rate_type_f_7">Flat</label>
+                </div>
+
+
+                <!-- range 8 -->
+                <input type="number" step="0.01" id="min8" name="min8">
+                <input type="number" step="0.01" id="max8" name="max8">
+
+                <input type="number" step="0.01" id="full_rate8" name="full_rate8">
+                <div>
+                    <input type="radio" id="oa_full_rate_type_v_8" name="oa_full_rate_type_8" value="variable">
+                    <label for="oa_full_rate_type_v_8">Variable</label><br>
+                    <input type="radio" id="oa_full_rate_type_f_8" name="oa_full_rate_type_8" value="flat">
+                    <label for="oa_full_rate_type_f_8">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="wrap_rate8" name="wrap_rate8">
+                <div>
+                    <input type="radio" id="oa_wrap_rate_type_v_8" name="oa_wrap_rate_type_8" value="variable">
+                    <label for="oa_wrap_rate_type_v_8">Variable</label><br>
+                    <input type="radio" id="oa_wrap_rate_type_f_8" name="oa_wrap_rate_type_8" value="flat">
+                    <label for="oa_wrap_rate_type_f_8">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="pbo_rate8" name="pbo_rate8">
+                <div>
+                    <input type="radio" id="oa_pbo_rate_type_v_8" name="oa_pbo_rate_type_8" value="variable">
+                    <label for="oa_pbo_rate_type_v_8">Variable</label><br>
+                    <input type="radio" id="oa_pbo_rate_type_f_8" name="oa_pbo_rate_type_8" value="flat">
+                    <label for="oa_pbo_rate_type_f_8">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="dropoff_rate8" name="dropoff_rate8">
+                <div>
+                    <input type="radio" id="oa_dropoff_rate_type_v_8" name="oa_dropoff_rate_type_8" value="variable">
+                    <label for="oa_dropoff_rate_type_v_8">Variable</label><br>
+                    <input type="radio" id="oa_dropoff_rate_type_f_8" name="oa_dropoff_rate_type_8" value="flat">
+                    <label for="oa_dropoff_rate_type_f_8">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="markup_rate8" name="markup_rate8">
+                <div>
+                    <input type="radio" id="oa_markup_rate_type_v_8" name="oa_markup_rate_type_8" value="variable">
+                    <label for="oa_markup_rate_type_v_8">Multip.</label><br>
+                    <input type="radio" id="oa_markup_rate_type_f_8" name="oa_markup_rate_type_8" value="flat">
+                    <label for="oa_markup_rate_type_f_8">Flat</label>
+                </div>
+
+
+                <!-- range 9 -->
+                <input type="number" step="0.01" id="min9" name="min9">
+                <input type="number" step="0.01" id="max9" name="max9">
+
+                <input type="number" step="0.01" id="full_rate9" name="full_rate9">
+                <div>
+                    <input type="radio" id="oa_full_rate_type_v_9" name="oa_full_rate_type_9" value="variable">
+                    <label for="oa_full_rate_type_v_9">Variable</label><br>
+                    <input type="radio" id="oa_full_rate_type_f_9" name="oa_full_rate_type_9" value="flat">
+                    <label for="oa_full_rate_type_f_9">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="wrap_rate9" name="wrap_rate9">
+                <div>
+                    <input type="radio" id="oa_wrap_rate_type_v_9" name="oa_wrap_rate_type_9" value="variable">
+                    <label for="oa_wrap_rate_type_v_9">Variable</label><br>
+                    <input type="radio" id="oa_wrap_rate_type_f_9" name="oa_wrap_rate_type_9" value="flat">
+                    <label for="oa_wrap_rate_type_f_9">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="pbo_rate9" name="pbo_rate9">
+                <div>
+                    <input type="radio" id="oa_pbo_rate_type_v_9" name="oa_pbo_rate_type_9" value="variable">
+                    <label for="oa_pbo_rate_type_v_9">Variable</label><br>
+                    <input type="radio" id="oa_pbo_rate_type_f_9" name="oa_pbo_rate_type_9" value="flat">
+                    <label for="oa_pbo_rate_type_f_9">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="dropoff_rate9" name="dropoff_rate9">
+                <div>
+                    <input type="radio" id="oa_dropoff_rate_type_v_9" name="oa_dropoff_rate_type_9" value="variable">
+                    <label for="oa_dropoff_rate_type_v_9">Variable</label><br>
+                    <input type="radio" id="oa_dropoff_rate_type_f_9" name="oa_dropoff_rate_type_9" value="flat">
+                    <label for="oa_dropoff_rate_type_f_9">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="markup_rate9" name="markup_rate9">
+                <div>
+                    <input type="radio" id="oa_markup_rate_type_v_9" name="oa_markup_rate_type_9" value="variable">
+                    <label for="oa_markup_rate_type_v_9">Multip.</label><br>
+                    <input type="radio" id="oa_markup_rate_type_f_9" name="oa_markup_rate_type_9" value="flat">
+                    <label for="oa_markup_rate_type_f_9">Flat</label>
+                </div>
+
+
+                <!-- range 10 -->
+                <input type="number" step="0.01" id="min10" name="min10">
+                <input type="number" step="0.01" id="max10" name="max10">
+
+                <input type="number" step="0.01" id="full_rate10" name="full_rate10">
+                <div>
+                    <input type="radio" id="oa_full_rate_type_v_10" name="oa_full_rate_type_10" value="variable">
+                    <label for="oa_full_rate_type_v_10">Variable</label><br>
+                    <input type="radio" id="oa_full_rate_type_f_10" name="oa_full_rate_type_10" value="flat">
+                    <label for="oa_full_rate_type_f_10">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="wrap_rate10" name="wrap_rate10">
+                <div>
+                    <input type="radio" id="oa_wrap_rate_type_v_10" name="oa_wrap_rate_type_10" value="variable">
+                    <label for="oa_wrap_rate_type_v_10">Variable</label><br>
+                    <input type="radio" id="oa_wrap_rate_type_f_10" name="oa_wrap_rate_type_10" value="flat">
+                    <label for="oa_wrap_rate_type_f_10">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="pbo_rate10" name="pbo_rate10">
+                <div>
+                    <input type="radio" id="oa_pbo_rate_type_v_10" name="oa_pbo_rate_type_10" value="variable">
+                    <label for="oa_pbo_rate_type_v_10">Variable</label><br>
+                    <input type="radio" id="oa_pbo_rate_type_f_10" name="oa_pbo_rate_type_10" value="flat">
+                    <label for="oa_pbo_rate_type_f_10">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="dropoff_rate10" name="dropoff_rate10">
+                <div>
+                    <input type="radio" id="oa_dropoff_rate_type_v_10" name="oa_dropoff_rate_type_10" value="variable">
+                    <label for="oa_dropoff_rate_type_v_10">Variable</label><br>
+                    <input type="radio" id="oa_dropoff_rate_type_f_10" name="oa_dropoff_rate_type_10" value="flat">
+                    <label for="oa_dropoff_rate_type_f_10">Flat</label>
+                </div>
+                <input type="number" step="0.01" id="markup_rate10" name="markup_rate10">
+                <div>
+                    <input type="radio" id="oa_markup_rate_type_v_10" name="oa_markup_rate_type_10" value="variable">
+                    <label for="oa_markup_rate_type_v_10">Multip.</label><br>
+                    <input type="radio" id="oa_markup_rate_type_f_10" name="oa_markup_rate_type_10" value="flat">
+                    <label for="oa_markup_rate_type_f_10">Flat</label>
+                </div>
+
+
+
+
+
+            </div>
+    </div>
+
+    <div>
+        <h2>Travel and Surcharges</h2>
+
+        <div class="rate_grid">
+            <div>Travel Min (km)</div>
+            <div>Travel Max (km)</div>
+            <div>Travel rate $</div>
+            <div>Rate Type</div>
+
+            <div>Elevator Min (cuft)</div>
+            <div>Elevator Max (cuft)</div>
+            <div>Elevator rate $</div>
+            <div>Rate Type</div>
+
+            <div>Long Carry Min (cuft)</div>
+            <div>Long Carry Max (cuft)</div>
+            <div>Long Carry rate $</div>
+            <div>Rate Type</div>
+
+            <!-- range 1 -->
+            <input type="number" step="0.01" id="travel_min1" name="travel_min1">
+            <input type="number" step="0.01" id="travel_max1" name="travel_max1">
+
+            <input type="number" step="0.01" id="travel_rate1" name="travel_rate1">
+            <div>
+                <input type="radio" id="travel_type_v_1" name="travel_type_1" value="variable">
+                <label for="travel_type_v_1">Variable</label><br>
+                <input type="radio" id="travel_type_f_1" name="travel_type_1" value="flat">
+                <label for="travel_type_f_1">Flat</label>
+            </div>
+
+            <input type="number" step="0.01" id="elevator_min1" name="elevator_min1">
+            <input type="number" step="0.01" id="elevator_max1" name="elevator_max1">
+
+            <input type="number" step="0.01" id="elevator_rate1" name="elevator_rate1">
+            <div>
+                <input type="radio" id="elevator_type_v_1" name="elevator_type_1" value="variable">
+                <label for="elevator_type_v_1">Variable</label><br>
+                <input type="radio" id="elevator_type_f_1" name="elevator_type_1" value="flat">
+                <label for="elevator_type_f_1">Flat</label>
+            </div>
+
+            <input type="number" step="0.01" id="longcarry_min1" name="longcarry_min1">
+            <input type="number" step="0.01" id="longcarry_max1" name="longcarry_max1">
+
+            <input type="number" step="0.01" id="longcarry_rate1" name="longcarry_rate1">
+            <div>
+                <input type="radio" id="longcarry_type_v_1" name="longcarry_type_1" value="variable">
+                <label for="longcarry_type_v_1">Variable</label><br>
+                <input type="radio" id="longcarry_type_f_1" name="longcarry_type_1" value="flat">
+                <label for="longcarry_type_f_1">Flat</label>
+            </div>
+
+
+            <!-- range 2 -->
+            <input type="number" step="0.01" id="travel_min2" name="travel_min2">
+            <input type="number" step="0.01" id="travel_max2" name="travel_max2">
+
+            <input type="number" step="0.01" id="travel_rate2" name="travel_rate2">
+            <div>
+                <input type="radio" id="travel_type_v_2" name="travel_type_2" value="variable">
+                <label for="travel_type_v_2">Variable</label><br>
+                <input type="radio" id="travel_type_f_2" name="travel_type_2" value="flat">
+                <label for="travel_type_f_2">Flat</label>
+            </div>
+
+            <input type="number" step="0.01" id="elevator_min2" name="elevator_min2">
+            <input type="number" step="0.01" id="elevator_max2" name="elevator_max2">
+
+            <input type="number" step="0.01" id="elevator_rate2" name="elevator_rate2">
+            <div>
+                <input type="radio" id="elevator_type_v_2" name="elevator_type_2" value="variable">
+                <label for="elevator_type_v_2">Variable</label><br>
+                <input type="radio" id="elevator_type_f_2" name="elevator_type_2" value="flat">
+                <label for="elevator_type_f_2">Flat</label>
+            </div>
+
+            <input type="number" step="0.01" id="longcarry_min2" name="longcarry_min2">
+            <input type="number" step="0.01" id="longcarry_max2" name="longcarry_max2">
+
+            <input type="number" step="0.01" id="longcarry_rate2" name="longcarry_rate2">
+            <div>
+                <input type="radio" id="longcarry_type_v_2" name="longcarry_type_2" value="variable">
+                <label for="longcarry_type_v_2">Variable</label><br>
+                <input type="radio" id="longcarry_type_f_2" name="longcarry_type_2" value="flat">
+                <label for="longcarry_type_f_2">Flat</label>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+        <div>
+            <h2>Trucking to Toronto</h2>
+
+            <div class="trucking_grid">
+                <div>Min gross volume (cuft)</div>
+                <div>Max gross volume (cuft)</div>
+                <div>Trucking rate $</div>
+                <div>Rate Type</div>
+
+
+
+                <!-- range 1 -->
+                <input type="number" step="0.01" id="trucking_min1" name="trucking_min1">
+                <input type="number" step="0.01" id="trucking_max1" name="trucking_max1">
+
+                <input type="number" step="0.01" id="trucking_rate1" name="trucking_rate1">
+                <div>
+                    <input type="radio" id="trucking_type_v_1" name="trucking_type_1" value="variable">
+                    <label for="trucking_type_v_1">Variable</label><br>
+                    <input type="radio" id="trucking_type_f_1" name="trucking_type_1" value="flat">
+                    <label for="trucking_type_f_1">Flat</label>
+                </div>
+
+                <!-- range 2 -->
+                <input type="number" step="0.01" id="trucking_min2" name="trucking_min2">
+                <input type="number" step="0.01" id="trucking_max2" name="trucking_max2">
+
+                <input type="number" step="0.01" id="trucking_rate2" name="trucking_rate2">
+                <div>
+                    <input type="radio" id="trucking_type_v_2" name="trucking_type_2" value="variable">
+                    <label for="trucking_type_v_2">Variable</label><br>
+                    <input type="radio" id="trucking_type_f_2" name="trucking_type_2" value="flat">
+                    <label for="trucking_type_f_2">Flat</label>
+                </div>
+
+                <!-- range 3 -->
+                <input type="number" step="0.01" id="trucking_min3" name="trucking_min3">
+                <input type="number" step="0.01" id="trucking_max3" name="trucking_max3">
+
+                <input type="number" step="0.01" id="trucking_rate3" name="trucking_rate3">
+                <div>
+                    <input type="radio" id="trucking_type_v_3" name="trucking_type_3" value="variable">
+                    <label for="trucking_type_v_3">Variable</label><br>
+                    <input type="radio" id="trucking_type_f_3" name="trucking_type_3" value="flat">
+                    <label for="trucking_type_f_3">Flat</label>
+                </div>
+            </div>
+        </div>
+        </form>
+
+
+        <script src="oa-handler.js"></script>
+
+</body>
+
+</html>
